@@ -11,13 +11,11 @@ export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
   const fontDir = join(process.cwd(), "src/app/fonts");
-  const [baskervville, inter700, inter800] = await Promise.all([
+  const [baskervville, inter700, geistMono800] = await Promise.all([
     readFile(join(fontDir, "Baskervville-Regular.ttf")),
     readFile(join(fontDir, "Inter-700.ttf")),
-    readFile(join(fontDir, "Inter-800.ttf")),
+    readFile(join(fontDir, "GeistMono-800.ttf")),
   ]);
-  const scanline =
-    "repeating-linear-gradient(0deg, rgba(16,22,26,0.07) 0 1px, rgba(255,255,255,0.05) 1px 2px, transparent 2px 7px)";
 
   return new ImageResponse(
     (
@@ -28,7 +26,7 @@ export default async function OpenGraphImage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: 42,
+          padding: 38,
           position: "relative",
           overflow: "hidden",
           background: "#050604",
@@ -40,9 +38,9 @@ export default async function OpenGraphImage() {
           style={{
             position: "absolute",
             inset: 0,
-            opacity: 0.28,
+            opacity: 0.24,
             background:
-              "repeating-linear-gradient(0deg, rgba(238,243,247,0.035) 0 1px, transparent 1px 5px)",
+              "repeating-linear-gradient(0deg, rgba(238,247,255,0.07) 0 1px, transparent 1px 4px), radial-gradient(circle at 74% 38%, rgba(0,71,255,0.28), transparent 360px)",
           }}
         />
         <div
@@ -50,110 +48,86 @@ export default async function OpenGraphImage() {
             width: "100%",
             height: "100%",
             display: "flex",
-            flexDirection: "column",
+            position: "relative",
             overflow: "hidden",
             border: "2px solid rgba(238,247,255,0.78)",
-            borderRadius: 18,
-            background: "#EEF3F7",
+            borderRadius: 28,
+            background:
+              "linear-gradient(180deg, rgba(248,251,255,0.96), rgba(220,232,243,0.84))",
             color: "#10110F",
-            boxShadow: "0 0 28px rgba(238,247,255,0.25)",
+            boxShadow: "0 0 42px rgba(238,247,255,0.22), 0 0 90px rgba(0,71,255,0.18)",
           }}
         >
           <div
             style={{
-              position: "relative",
-              height: 410,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              padding: "52px 52px 44px",
-              borderBottom: "2px solid #10110F",
+              position: "absolute",
+              inset: 0,
+              opacity: 0.55,
               background:
-                "radial-gradient(circle at 22% 14%, rgba(255,255,255,0.94), transparent 220px), radial-gradient(circle at 76% 18%, rgba(0,71,255,0.10), transparent 300px), #EEF3F7",
+                "repeating-linear-gradient(0deg, rgba(7,10,8,0.24) 0 1px, rgba(255,255,255,0.14) 1px 2px, transparent 2px 5px)",
             }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                opacity: 0.62,
-                background: scanline,
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                right: 96,
-                top: 118,
-                width: 390,
-                height: 160,
-                border: "2px solid rgba(16,17,15,0.08)",
-                transform: "rotate(-7deg)",
-                boxShadow: "0 0 44px rgba(238,247,255,0.32)",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                right: 210,
-                top: 260,
-                width: 300,
-                height: 92,
-                border: "2px solid rgba(0,71,255,0.12)",
-                transform: "rotate(6deg)",
-                boxShadow: "0 0 42px rgba(238,247,255,0.24)",
-              }}
-            />
-            <div
-              style={{
-                position: "relative",
-                marginBottom: 28,
-                fontSize: 15,
-                fontWeight: 800,
-                letterSpacing: 4,
-                textTransform: "uppercase",
-                color: "rgba(16,17,15,0.62)",
-              }}
-            >
-              Privacy infrastructure for regulated operators
-            </div>
-            <div
-              style={{
-                position: "relative",
-                width: 860,
-                fontFamily: "Baskervville",
-                fontSize: 87,
-                lineHeight: 0.88,
-                letterSpacing: -6.2,
-                textShadow: "0 0 18px rgba(255,255,255,0.22)",
-              }}
-            >
-              The privacy of a financial account, on public chains.
-            </div>
-          </div>
-
+          />
           <div
             style={{
-              flex: 1,
+              position: "absolute",
+              top: 62,
+              left: 66,
+              right: 66,
               display: "flex",
-              alignItems: "center",
-              padding: "0 52px",
-              background: "#050604",
-              color: "#EEF3F7",
+              justifyContent: "space-between",
+              color: "rgba(16,17,15,0.62)",
+              fontFamily: "Geist Mono",
+              fontSize: 14,
+              fontWeight: 800,
+              letterSpacing: 3.2,
+              textTransform: "uppercase",
             }}
           >
-            <div
-              style={{
-                fontSize: 28,
-                fontWeight: 800,
-                letterSpacing: 1.8,
-                lineHeight: 1.05,
-                textTransform: "uppercase",
-              }}
-            >
-              Built for wallets, neobanks, and chains.
-            </div>
+            <span>Compliant Privacy Infrastructure</span>
+            <span>EVM Rails</span>
           </div>
+          <div
+            style={{
+              position: "absolute",
+              left: 66,
+              top: 142,
+              width: 720,
+              fontFamily: "Baskervville",
+              fontSize: 82,
+              lineHeight: 1.04,
+              letterSpacing: -3.2,
+              textShadow: "0 0 18px rgba(255,255,255,0.28)",
+            }}
+          >
+            The privacy of a financial account, on public chains.
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              left: 66,
+              bottom: 72,
+              width: 720,
+              color: "rgba(16,17,15,0.72)",
+              fontSize: 25,
+              lineHeight: 1.34,
+              letterSpacing: -0.4,
+            }}
+          >
+            Per-customer privacy pools. Operator-held viewing keys. Existing EVM chains.
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              right: 54,
+              bottom: 44,
+              width: 220,
+              height: 220,
+              borderRadius: 999,
+              border: "2px solid rgba(238,247,255,0.85)",
+              background: "rgba(5,6,4,0.92)",
+              boxShadow: "0 0 34px rgba(0,71,255,0.28), inset 0 0 28px rgba(238,247,255,0.16)",
+            }}
+          />
         </div>
       </div>
     ),
@@ -162,7 +136,7 @@ export default async function OpenGraphImage() {
       fonts: [
         { name: "Baskervville", data: baskervville, style: "normal", weight: 400 },
         { name: "Inter", data: inter700, style: "normal", weight: 700 },
-        { name: "Inter", data: inter800, style: "normal", weight: 800 },
+        { name: "Geist Mono", data: geistMono800, style: "normal", weight: 800 },
       ],
     },
   );

@@ -80,7 +80,7 @@ export default function OpenGraphImage() {
               color: "#9FC8FF",
             }}
           >
-            Design-partner pilots
+            Compliant privacy infrastructure
           </div>
           <div
             style={{
@@ -91,7 +91,7 @@ export default function OpenGraphImage() {
               letterSpacing: "-0.075em",
             }}
           >
-            Pilot private flows on existing EVM rails.
+            Private activity on existing EVM rails.
           </div>
           <div
             style={{
@@ -103,7 +103,7 @@ export default function OpenGraphImage() {
               color: "rgba(255,255,255,0.72)",
             }}
           >
-            Per-customer privacy pools for regulated EVM pilots with authorized compliance visibility.
+            Per-customer privacy pools for regulated EVM products with authorized compliance visibility.
           </div>
         </div>
       </div>

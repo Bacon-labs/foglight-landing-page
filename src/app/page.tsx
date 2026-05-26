@@ -4,39 +4,39 @@ const contactHref = "https://x.com/FoglightPrivacy";
 
 const comparisonBefore = [
   {
-    title: "New networks fragment the pilot",
-    body: "Users, liquidity, integrations, and product logic move away from the EVM environment the institution already supports.",
+    title: "Public chains expose customer activity",
+    body: "Balances, counterparties, payroll, treasury movement, and trading behavior are visible to anyone watching the chain.",
   },
   {
-    title: "Shared pools inherit outside risk",
-    body: "A regulated customer can end up depending on activity and counterparties it does not onboard or control.",
+    title: "New networks fragment distribution",
+    body: "Users, liquidity, integrations, and product logic have to move away from the EVM environment the institution already supports.",
   },
   {
-    title: "Voluntary disclosure arrives too late",
-    body: "Compliance, support, and legal teams need reliable records without asking users to cooperate after an incident.",
+    title: "Shared pools import outside risk",
+    body: "A regulated customer can depend on activity and counterparties it did not onboard, monitor, or control.",
   },
   {
-    title: "Monitoring leaves activity public",
-    body: "Chain analytics can score flows, but they do not hide balances, counterparties, payroll, trading, or treasury movement from the public.",
+    title: "Voluntary disclosure breaks under pressure",
+    body: "Compliance and legal teams need reliable records without asking users to cooperate after an incident.",
   },
   {
-    title: "Relayers add operational surface",
-    body: "Operator-run relayers increase legal and infrastructure exposure for a product that should fit existing transaction plumbing.",
+    title: "Relayers add operator exposure",
+    body: "Operator-run relayers create legal and infrastructure surface for a product that should fit existing transaction plumbing.",
   },
 ];
 
 const comparisonAfter = [
   {
-    title: "Dedicated pool for one customer",
-    body: "Each pilot customer operates its own privacy pool, with policy settings matched to its jurisdiction and risk model.",
+    title: "Dedicated pool per institutional customer",
+    body: "Each customer operates its own privacy pool, with policy settings matched to its jurisdiction and risk model.",
   },
   {
     title: "Existing EVM apps and liquidity",
-    body: "The pilot runs on the chain, assets, wallets, and app surface the institution already uses.",
+    body: "Foglight runs on the chains, assets, wallets, and app surfaces the institution already uses.",
   },
   {
     title: "Customer-held viewing keys",
-    body: "The customer controls authorized visibility for compliance, risk, support, and legal workflows.",
+    body: "The institution controls authorized visibility for compliance, risk, support, and legal workflows.",
   },
   {
     title: "Encrypted traces with logged access",
@@ -51,23 +51,23 @@ const comparisonAfter = [
 const productSteps = [
   {
     step: "01",
-    title: "Pilot scoping",
-    body: "Pick one customer segment, one EVM environment, one asset set, and the exact flows that need public-chain privacy.",
+    title: "Gated entry",
+    body: "Plug into the customer's KYC/KYB, sanctions, Travel Rule, and policy systems before users enter private flows.",
   },
   {
     step: "02",
-    title: "Compliance integrations",
-    body: "Connect the customer’s KYC/KYB, sanctions, Travel Rule, and policy systems before users enter private flows.",
+    title: "Private balances and transfers",
+    body: "Contracts, SDKs, and APIs let wallets, chains, issuers, and neobanks add private activity to existing EVM apps.",
   },
   {
     step: "03",
-    title: "EVM deployment",
-    body: "Deploy contracts, SDKs, and APIs for private balances and activity on existing apps and liquidity.",
+    title: "Encrypted onchain traces",
+    body: "Transactions publish encrypted traces that stay hidden from the public but can be decrypted by authorized customer teams.",
   },
   {
     step: "04",
-    title: "Disclosure workflow",
-    body: "Test transaction history, balance views, source-of-funds reports, and audit logs for authorized teams.",
+    title: "Disclosure workflows",
+    body: "Transaction history, balances, source-of-funds reports, and access logs support compliance, risk, support, and legal requests.",
   },
 ];
 
@@ -75,22 +75,9 @@ const integrationRows = [
   ["Entry policy", "Customer KYC/KYB, sanctions screening, Travel Rule, and risk rules before pool access"],
   ["Execution", "Existing EVM chains, wallets, assets, apps, bundlers, paymasters, and liquidity"],
   ["Pool boundary", "One dedicated privacy pool per institutional customer"],
-  ["Disclosure authority", "Customer-held viewing keys for authorized compliance, risk, support, and legal teams"],
-  ["Audit evidence", "Encrypted traces, access logs, transaction histories, balances, and source-of-funds reports"],
+  ["Viewing authority", "Customer-held viewing keys for authorized compliance, risk, support, and legal teams"],
+  ["Records", "Encrypted traces, access logs, transaction histories, balances, and source-of-funds reports"],
 ];
-
-const logoAsciiTexture = String.raw`
-KYC_GATE  VIEW_KEY  PRIVACY_POOL  EVM_TRACE  DISCLOSE  AUDIT_LOG  CUSTOMER_HELD
-  01 ░▒▓ ENCRYPTED BALANCE ▓▒░  02 PRIVATE TRANSFER  03 AUTHORIZED REVEAL
-TRACE: 0x71f...  POOL: A17  KEY: customer-held  POLICY: pass  GAS: base
-      ░░▒▒▓▓████▓▓▒▒░░        foglight          ░░▒▒▓▓████▓▓▒▒░░
-PUBLIC: masked       COMPLIANCE: visible-on-request       USER: private
-  KYC_GATE  VIEW_KEY  PRIVACY_POOL  EVM_TRACE  DISCLOSE  AUDIT_LOG  CUSTOMER_HELD
-    01 ░▒▓ ENCRYPTED BALANCE ▓▒░  02 PRIVATE TRANSFER  03 AUTHORIZED REVEAL
-TRACE: 0x71f...  POOL: A17  KEY: customer-held  POLICY: pass  GAS: base
-      ░░▒▒▓▓████▓▓▒▒░░        foglight          ░░▒▒▓▓████▓▓▒▒░░
-PUBLIC: masked       COMPLIANCE: visible-on-request       USER: private
-`;
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -128,18 +115,60 @@ function CircleCheck() {
   );
 }
 
-function LogoMotionField() {
+function HeroMotionField() {
   return (
-    <div className="logo-motion-stage" aria-hidden="true">
-      <div className="logo-motion-glow" />
-      <div className="logo-wordmark logo-wordmark-blue" />
-      <div className="logo-wordmark logo-wordmark-white" />
-      <div className="logo-ascii-mask">
-        <pre>{logoAsciiTexture}</pre>
+    <div className="privacy-motion-stage" aria-hidden="true">
+      <div className="privacy-card-shell">
+        <div className="privacy-card-topline">
+          <span>Foglight privacy plane</span>
+          <span>authorized visibility</span>
+        </div>
+
+        <div className="privacy-map">
+          <div className="privacy-map-grid" />
+          <svg className="privacy-flow-lines" viewBox="0 0 640 390" fill="none" preserveAspectRatio="none">
+            <path className="privacy-line privacy-line-soft" d="M64 202 C156 108 242 106 322 198 C412 303 512 293 584 184" />
+            <path className="privacy-line privacy-line-soft privacy-line-soft-two" d="M88 278 C184 252 225 320 316 260 C405 202 478 206 562 254" />
+            <path className="privacy-line privacy-line-active privacy-line-active-one" d="M78 205 C170 116 246 120 323 200 C414 294 506 286 574 188" />
+            <path className="privacy-line privacy-line-active privacy-line-active-two" d="M98 278 C188 250 230 314 318 260 C402 205 477 210 552 252" />
+          </svg>
+
+          <div className="privacy-node privacy-node-entry">
+            <span>KYC gate</span>
+            <strong>Policy pass</strong>
+          </div>
+          <div className="privacy-node privacy-node-apps">
+            <span>EVM apps</span>
+            <strong>Wallets · DeFi</strong>
+          </div>
+          <div className="privacy-node privacy-node-reveal">
+            <span>View key</span>
+            <strong>Customer held</strong>
+          </div>
+
+          <div className="privacy-core">
+            <div className="privacy-core-rings" />
+            <Image src="/logo-mark-white-on-blue.png" alt="" width={88} height={88} className="privacy-core-mark" />
+            <div>
+              <span>Private pool</span>
+              <strong>Encrypted traces</strong>
+            </div>
+          </div>
+
+          <div className="privacy-packet privacy-packet-one" />
+          <div className="privacy-packet privacy-packet-two" />
+          <div className="privacy-packet privacy-packet-three" />
+        </div>
+
+        <div className="privacy-card-footer">
+          <div className="motion-wordmark" />
+          <div className="privacy-ledger-feed">
+            <span>ENTRY CHECKED</span>
+            <span>TRACE ENCRYPTED</span>
+            <span>REVEAL LOGGED</span>
+          </div>
+        </div>
       </div>
-      <div className="logo-scanline" />
-      <div className="logo-spark logo-spark-a" />
-      <div className="logo-spark logo-spark-b" />
     </div>
   );
 }
@@ -151,11 +180,10 @@ export default function Home() {
 
       <section id="top" className="hero-shell relative min-h-[860px] overflow-hidden bg-[var(--navy)] text-white md:min-h-screen">
         <div className="hero-orbit-field" aria-hidden="true">
-          <div className="hero-focus-panel" />
           <div className="orbit orbit-one" />
           <div className="orbit orbit-two" />
           <div className="orbit orbit-three" />
-          <LogoMotionField />
+          <HeroMotionField />
         </div>
 
         <header className="relative z-10 mx-auto flex h-24 w-full max-w-[92rem] items-center justify-between px-5 sm:px-8 lg:px-16">
@@ -165,8 +193,8 @@ export default function Home() {
           </a>
 
           <nav className="hidden items-center gap-7 text-[14px] text-white/68 md:flex">
-            <a className="transition hover:text-white" href="#pilot">
-              Pilot
+            <a className="transition hover:text-white" href="#product">
+              Product
             </a>
             <a className="transition hover:text-white" href="#difference">
               Difference
@@ -177,26 +205,26 @@ export default function Home() {
           </nav>
 
           <a className="button button-light h-11 px-5 text-sm" href={contactHref} target="_blank" rel="noreferrer">
-            Discuss a pilot
+            Talk to Foglight
           </a>
         </header>
 
         <div className="relative z-10 mx-auto flex min-h-[760px] w-full max-w-[92rem] flex-col justify-start px-5 pb-20 pt-24 sm:px-8 md:min-h-[calc(100vh-6rem)] md:justify-center md:pt-12 lg:px-16">
           <div className="max-w-5xl">
-            <p className="eyebrow text-[var(--blue-ice)]">Design-partner pilots</p>
+            <p className="eyebrow text-[var(--blue-ice)]">Compliant privacy infrastructure</p>
             <h1 className="display-title mt-8 max-w-[13ch] text-balance text-[clamp(4.05rem,8.8vw,9.35rem)] leading-[0.88] tracking-[-0.058em] text-white">
-              Pilot private flows on existing EVM rails.
+              Private activity on existing EVM rails.
             </h1>
             <p className="mt-8 max-w-2xl text-pretty text-lg leading-8 text-white/66 sm:text-xl sm:leading-9">
-              Foglight helps regulated wallets, chains, stablecoin issuers, and neobanks test dedicated privacy pools that hide customer activity from the public while preserving authorized compliance access.
+              Foglight lets wallets, chains, stablecoin issuers, and neobanks offer private balances and transactions without launching a new L1 or giving up authorized compliance visibility.
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <a className="button button-blue h-12 px-6 text-sm" href={contactHref} target="_blank" rel="noreferrer">
-                Discuss a pilot
+                Talk to Foglight
               </a>
-              <a className="button button-ghost h-12 px-6 text-sm" href="#pilot">
-                See pilot shape
+              <a className="button button-ghost h-12 px-6 text-sm" href="#product">
+                See how it works
               </a>
             </div>
           </div>
@@ -216,15 +244,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="pilot" className="section-shell bg-[var(--paper)]">
+      <section id="product" className="section-shell bg-[var(--paper)]">
         <div className="mx-auto w-full max-w-[92rem] px-5 sm:px-8 lg:px-16">
           <div className="section-intro mx-auto max-w-4xl text-center">
-            <p className="eyebrow text-[var(--blue)]">Pilot model</p>
+            <p className="eyebrow text-[var(--blue)]">Product</p>
             <h2 className="display-heading mt-5 text-balance text-[clamp(3.15rem,6.4vw,7rem)] leading-[0.92] tracking-[-0.055em]">
-              Prove privacy inside the institution’s existing stack.
+              Per-customer privacy pools for regulated crypto products.
             </h2>
             <p className="mx-auto mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              The target is narrow: one customer, one dedicated pool, existing onboarding and policy systems, private balances and activity, and a controlled way to produce records when authorized teams need them.
+              Each institutional customer gets an isolated pool. User activity stays hidden from the public, while the customer keeps the keys and workflows needed to produce records when authorized teams need them.
             </p>
           </div>
 
@@ -232,7 +260,7 @@ export default function Home() {
             <div className="comparison-column comparison-before">
               <div className="flex items-center justify-between gap-4">
                 <h3 className="comparison-heading">Status quo</h3>
-                <span className="comparison-pill">Before</span>
+                <span className="comparison-pill">Today</span>
               </div>
               <div className="mt-10 divide-y divide-black/10">
                 {comparisonBefore.map((item) => (
@@ -254,7 +282,7 @@ export default function Home() {
               </div>
               <div className="relative z-10 flex items-center justify-between gap-4">
                 <h3 className="comparison-heading text-white">With Foglight</h3>
-                <span className="comparison-pill comparison-pill-after">Pilot</span>
+                <span className="comparison-pill comparison-pill-after">Private</span>
               </div>
               <div className="relative z-10 mt-10 divide-y divide-white/10">
                 {comparisonAfter.map((item) => (
@@ -276,13 +304,13 @@ export default function Home() {
         <div className="mx-auto w-full max-w-[92rem] px-5 sm:px-8 lg:px-16">
           <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
             <div>
-              <p className="eyebrow text-[var(--blue)]">Pilot scope</p>
+              <p className="eyebrow text-[var(--blue)]">How it works</p>
               <h2 className="display-heading mt-5 text-balance text-[clamp(3rem,5.5vw,6.5rem)] leading-[0.92] tracking-[-0.055em]">
-                What an institutional pilot should test.
+                Privacy that fits the stack customers already run.
               </h2>
             </div>
             <p className="max-w-2xl text-lg leading-8 text-[var(--muted)] lg:justify-self-end">
-              Foglight is designed for teams that already have users, assets, policies, and reporting obligations. The pilot should prove that privacy can fit those constraints instead of asking the institution to rebuild around a new network.
+              Foglight is designed for teams that already have users, assets, policies, and reporting obligations. Early deployments can start with one customer flow and one chain, then expand once the integration pattern is proven.
             </p>
           </div>
 
@@ -323,7 +351,7 @@ export default function Home() {
           <div>
             <p className="eyebrow text-[var(--blue)]">Compliance posture</p>
             <h2 className="display-heading mt-5 text-balance text-[clamp(3rem,5.3vw,6.2rem)] leading-[0.92] tracking-[-0.055em]">
-              The customer remains the control plane.
+              The institution remains the control plane.
             </h2>
           </div>
           <div className="rounded-[2rem] border border-black/10 bg-white p-5 sm:p-7">
@@ -346,12 +374,12 @@ export default function Home() {
         <div className="mx-auto max-w-[92rem] rounded-[2.4rem] bg-[var(--navy)] p-7 text-white sm:p-10 lg:p-14">
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <p className="eyebrow text-[var(--blue-ice)]">Design partners</p>
+              <p className="eyebrow text-[var(--blue-ice)]">Deployment</p>
               <h2 className="display-heading mt-5 max-w-4xl text-balance text-[clamp(3rem,6vw,7rem)] leading-[0.9] tracking-[-0.055em] text-white">
-                Ready to test customer privacy without moving off your rails?
+                Bring customer privacy to the chain your users already use.
               </h2>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/64">
-                Best fit: a regulated wallet, chain, stablecoin or e-money issuer, or neobank with KYC’d users, an EVM product surface, and a concrete need to keep balances, counterparties, or transaction flows private from public chain watchers.
+                Foglight is built for regulated wallets, chains, stablecoin issuers, and neobanks that need private customer activity, existing EVM distribution, and a clean path for authorized records.
               </p>
             </div>
             <a className="button button-light h-12 px-6 text-sm" href={contactHref} target="_blank" rel="noreferrer">

@@ -8,6 +8,9 @@ export const size = {
 export const contentType = "image/png";
 
 export default function OpenGraphImage() {
+  const scanline =
+    "repeating-linear-gradient(0deg, rgba(16,17,15,0.13) 0 1px, transparent 1px 6px)";
+
   return new ImageResponse(
     (
       <div
@@ -15,10 +18,13 @@ export default function OpenGraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 42,
           position: "relative",
           overflow: "hidden",
-          background: "linear-gradient(180deg, #F4F2EC 0%, #EFEEE8 100%)",
-          color: "#10100E",
+          background: "#050604",
+          color: "#EEF3F7",
           fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
@@ -26,138 +32,132 @@ export default function OpenGraphImage() {
           style={{
             position: "absolute",
             inset: 0,
-            background:
-              "linear-gradient(90deg, rgba(16,16,14,0.08) 1px, transparent 1px), linear-gradient(0deg, rgba(16,16,14,0.08) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
+            opacity: 0.34,
+            background: scanline,
           }}
         />
         <div
           style={{
-            position: "absolute",
-            right: "56px",
-            top: "78px",
-            width: "392px",
-            height: "440px",
-            border: "2px solid #10100E",
-            background: "#EEF2F6",
+            width: "100%",
+            height: "100%",
             display: "flex",
             flexDirection: "column",
+            overflow: "hidden",
+            border: "2px solid rgba(238,243,247,0.78)",
+            borderRadius: 18,
+            background: "#EEF3F7",
+            color: "#10110F",
           }}
         >
           <div
             style={{
-              height: "200px",
-              borderBottom: "2px solid #10100E",
+              position: "relative",
+              height: 410,
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "52px",
-              fontWeight: 800,
-              letterSpacing: "-0.08em",
-              color: "#0047FF",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: "40px 48px 42px",
+              borderBottom: "2px solid #10110F",
+              background: scanline,
             }}
           >
-            Foglight
-          </div>
-          {[
-            ["Model", "Dedicated pool"],
-            ["Public view", "Settlement surface"],
-            ["Authorized", "Record produced"],
-          ].map(([label, value]) => (
             <div
-              key={label}
               style={{
+                position: "absolute",
+                right: 42,
+                top: 34,
+                width: 72,
+                height: 72,
                 display: "flex",
-                height: "58px",
-                borderBottom: "2px solid #10100E",
-                fontSize: "17px",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "2px solid rgba(16,17,15,0.22)",
+                background: "#FFFFFF",
+                color: "#0047FF",
+                fontSize: 42,
+                fontWeight: 800,
+                letterSpacing: -5,
               }}
             >
+              F
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                left: 46,
+                top: 34,
+                fontSize: 30,
+                fontWeight: 800,
+                letterSpacing: -2,
+              }}
+            >
+              Foglight
+            </div>
+            <div
+              style={{
+                marginBottom: 26,
+                fontSize: 16,
+                fontWeight: 700,
+                letterSpacing: 4,
+                textTransform: "uppercase",
+                color: "rgba(16,17,15,0.62)",
+              }}
+            >
+              Privacy infrastructure for regulated operators
+            </div>
+            <div
+              style={{
+                width: 900,
+                fontFamily: "Georgia, 'Times New Roman', serif",
+                fontSize: 83,
+                lineHeight: 0.84,
+                letterSpacing: -7,
+              }}
+            >
+              The privacy of a financial account, on public chains.
+            </div>
+          </div>
+
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              background: "#050604",
+              color: "#EEF3F7",
+            }}
+          >
+            {[
+              ["Report", "Foglight"],
+              ["Switch", "Public graph → privacy pool"],
+              ["Outcome", "Records your team can produce"],
+            ].map(([label, value], index) => (
               <div
+                key={label}
                 style={{
-                  width: "142px",
-                  borderRight: "2px solid #10100E",
-                  padding: "16px 16px",
-                  color: "rgba(16,16,14,0.55)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
+                  flex: index === 0 ? 0.75 : index === 1 ? 1.4 : 1.25,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  gap: 16,
+                  padding: "24px 30px",
+                  borderRight: "2px solid rgba(238,243,247,0.48)",
                 }}
               >
-                {label}
+                <div
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 700,
+                    letterSpacing: 4,
+                    textTransform: "uppercase",
+                    color: "rgba(238,243,247,0.56)",
+                  }}
+                >
+                  {label}
+                </div>
+                <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: -1 }}>{value}</div>
               </div>
-              <div style={{ padding: "16px 16px", fontWeight: 700 }}>{value}</div>
-            </div>
-          ))}
-          <div
-            style={{
-              height: "66px",
-              background: "#10100E",
-              color: "#FBF7ED",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "19px",
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-            }}
-          >
-            Existing EVM rails
+            ))}
           </div>
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            left: "56px",
-            top: "52px",
-            display: "flex",
-            alignItems: "center",
-            gap: "16px",
-          }}
-        >
-          <div
-            style={{
-              width: "58px",
-              height: "58px",
-              background: "#0047FF",
-              color: "white",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "34px",
-              fontWeight: 800,
-            }}
-          >
-            F
-          </div>
-          <div style={{ fontSize: "30px", fontWeight: 800, letterSpacing: "-0.05em" }}>Foglight</div>
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            left: "56px",
-            top: "154px",
-            width: "590px",
-            fontSize: "18px",
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "rgba(16,16,14,0.58)",
-          }}
-        >
-          Compliant privacy infrastructure for existing EVM chains
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            left: "52px",
-            bottom: "58px",
-            width: "595px",
-            fontFamily: "Georgia, 'Times New Roman', serif",
-            fontSize: "88px",
-            lineHeight: 0.84,
-            letterSpacing: "-0.075em",
-          }}
-        >
-          Private flows on public chains.
         </div>
       </div>
     ),

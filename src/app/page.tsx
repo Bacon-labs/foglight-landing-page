@@ -5,40 +5,39 @@ const contactHref = "https://x.com/FoglightPrivacy";
 const problemCards = [
   {
     title: "Everything is readable.",
-    body: "Balances, counterparties, payroll, vendors, trades, treasury flows, and user behavior are visible to anyone watching the chain.",
+    body: "Balances, counterparties, payroll, vendor payments, trades, and treasury flows are visible to competitors, analysts, and anyone watching.",
   },
   {
     title: "Privacy usually means leaving your rails.",
-    body: "Most privacy tools push users into external systems your product team can't operate and your compliance team can't reach.",
+    body: "Most privacy products send users into a separate app, chain, or flow your team cannot operate.",
   },
   {
     title: "Manual disclosure breaks under pressure.",
-    body: "When something goes wrong, you can't be reconstructing activity from screenshots or chasing users for cooperation.",
+    body: "When support, risk, or compliance asks what happened, screenshots and user cooperation are not enough.",
   },
 ];
 
 const comparisonRows = [
   {
-    label: "Public default",
-    current:
-      "Your users' balances, counterparties, payroll, vendors, trades, and treasury flows are readable by default.",
+    label: "User privacy",
+    current: "Customer activity is public or pushed into a separate privacy flow.",
     foglight:
-      "User activity can move behind a customer-specific privacy pool while settlement stays on supported EVM rails.",
+      "Per-customer pools give users account privacy while settlement stays on supported EVM chains.",
   },
   {
-    label: "Privacy tools",
-    current: "Existing privacy tools push your users into systems your team can't touch.",
+    label: "Operator control",
+    current: "Risk and compliance teams rely on manual reconstruction when something needs review.",
     foglight:
-      "Your compliance team keeps the keys. Your team sees the records it needs when it needs them.",
+      "Operator-held viewing keys and records workflows keep review inside your stack.",
   },
   {
-    label: "When something goes wrong",
-    current:
-      "You can't be reconstructing activity from screenshots or chasing users for cooperation.",
-    foglight: "Your team can produce real records through defined viewing workflows.",
+    label: "Product surface",
+    current: "Privacy becomes another app, another chain, or another workflow for users to learn.",
+    foglight:
+      "Foglight runs behind the wallet, neobank, chain, or payment product you already ship.",
   },
   {
-    label: "Failure mode",
+    label: "Vendor risk",
     current: "If your privacy vendor disappears, can you still operate?",
     foglight:
       "Yes. Customer pools are designed so your team retains records and migration paths even if Foglight is gone.",
@@ -59,7 +58,7 @@ const organizationJsonLd = {
   name: "Foglight",
   sameAs: ["https://x.com/FoglightPrivacy"],
   description:
-    "Privacy infrastructure for regulated crypto products, with customer-specific privacy pools on existing EVM chains.",
+    "Per-customer privacy pools for regulated EVM products, with operator-held records and migration paths.",
 };
 
 function XLogo() {
@@ -75,13 +74,8 @@ function HeroReport() {
     <div className="artifact artifact-hero" aria-label="Foglight report visual">
       <div className="artifact-top">
         <div className="artifact-scan" aria-hidden="true" />
-        <div className="hero-crt-field" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
         <div className="hero-type-lockup">
-          <p className="eyebrow">Privacy infrastructure for regulated operators</p>
+          <p className="eyebrow">Compliant Privacy Infrastructure for Existing EVM Chains</p>
           <h1>The privacy of a financial account, on public chains.</h1>
           <p>
             Your users get the privacy they&apos;d expect from a bank account. Your compliance team keeps the keys. Runs on the EVM chains you already support.
@@ -90,7 +84,7 @@ function HeroReport() {
       </div>
 
       <div className="artifact-grid hero-audience">
-        <p>Built for wallets, neobanks, and chains.</p>
+        <p>Per-customer privacy pools for wallets, neobanks, chains, and payment apps.</p>
       </div>
     </div>
   );
@@ -131,18 +125,14 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="hero-problem-transition" aria-hidden="true">
-        <span className="photon-pane pane-one" />
-        <span className="photon-pane pane-two" />
-        <span className="photon-pane pane-three" />
-      </div>
+      <div className="hero-problem-transition" aria-hidden="true" />
 
       <section id="problem" className="report-section report-section-light problem-section">
         <div className="problem-grid">
           <div className="problem-lead section-panel light-panel glow-card">
             <h2>Public chains turn accounts into glass boxes.</h2>
             <p>
-              For consumers and businesses, universal visibility isn&apos;t transparency. It&apos;s exposure, and a reason to choose something else.
+              For regulated wallets, chains, and payment apps, public-by-default activity leaks customer behavior and business data. Foglight adds per-customer privacy pools without changing your EVM rails.
             </p>
           </div>
           {problemCards.map((card, index) => (
@@ -184,7 +174,7 @@ export default function Home() {
             <p className="eyebrow">Clear boundaries</p>
             <h2>What Foglight is not.</h2>
             <p>
-              A narrower product is easier to trust. Foglight gives users privacy from public observers while keeping the records your team needs inside your operating model.
+              Foglight has a narrow job: keep customer activity private from public observers while preserving operator-held access to the records a regulated product needs.
             </p>
           </div>
           <div className="artifact-grid boundary-grid">
@@ -200,9 +190,9 @@ export default function Home() {
       <section className="report-section report-section-dark final-section">
         <div className="final-artifact">
           <div className="final-copy">
-            <h2>Add privacy without sending users off your rails.</h2>
+            <h2>Bring account privacy to your EVM product.</h2>
             <p>
-              If you&apos;re building a wallet, chain, stablecoin product, exchange, neobank, or payment platform, talk to Foglight about the privacy workflow your users and compliance team actually need.
+              If you run a wallet, neobank, stablecoin app, exchange, chain, or payment platform, we&apos;ll map how Foglight fits: customer pools, viewing keys, records workflow, and fallback plan.
             </p>
           </div>
           <a className="button button-blue" href={contactHref} target="_blank" rel="noreferrer">
@@ -216,7 +206,7 @@ export default function Home() {
           <Image src="/logo-mark-white-on-blue.png" alt="Foglight logo" width={34} height={34} />
           <span>Foglight</span>
         </a>
-        <span>Privacy infrastructure for regulated operators.</span>
+        <span>Per-customer privacy pools for regulated EVM products.</span>
         <a href={contactHref} target="_blank" rel="noreferrer" aria-label="Foglight on X">
           <XLogo />
           @FoglightPrivacy

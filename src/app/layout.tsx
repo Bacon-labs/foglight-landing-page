@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
 });
@@ -12,13 +12,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://foglight.xyz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Foglight - Compliant Privacy Infrastructure for EVM Chains",
+  title: "Foglight - Compliant privacy for existing EVM rails",
   description:
-    "Per-customer privacy pools that let regulated wallets, chains, and neobanks offer bank-level user privacy without launching a new L1.",
+    "Foglight lets wallets, chains, stablecoin issuers, and neobanks add private balances and transactions without launching a new network or losing compliance visibility.",
   openGraph: {
-    title: "Foglight - Compliant Privacy Infrastructure for EVM Chains",
+    title: "Foglight - Compliant privacy for existing EVM rails",
     description:
-      "Per-customer privacy pools for regulated wallets, chains, and neobanks on existing EVM chains.",
+      "Private account infrastructure for existing EVM chains, wallets, stablecoin issuers, and neobanks.",
     url: siteUrl,
     siteName: "Foglight",
     type: "website",
@@ -27,15 +27,15 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Foglight - Compliant Privacy Infrastructure for Existing EVM Chains",
+        alt: "Foglight - Privacy for existing EVM rails",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foglight - Compliant Privacy Infrastructure for EVM Chains",
+    title: "Foglight - Compliant privacy for existing EVM rails",
     description:
-      "Per-customer privacy pools for regulated wallets, chains, and neobanks on existing EVM chains.",
+      "Private account infrastructure for existing EVM chains, wallets, stablecoin issuers, and neobanks.",
     images: ["/opengraph-image"],
   },
 };
@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
+    <html lang="en" className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full">{children}</body>
     </html>
   );

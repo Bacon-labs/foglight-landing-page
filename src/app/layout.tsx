@@ -1,24 +1,33 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Baskervville, Inter } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const baskervville = Baskervville({
+  variable: "--font-baskervville",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://foglight.xyz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Foglight - Private activity on existing EVM rails",
+  title: "Foglight - Privacy for regulated EVM products",
   description:
-    "Per-customer privacy-pool infrastructure for regulated wallets, chains, stablecoin issuers, and neobanks that need private balances and authorized compliance visibility.",
+    "Privacy infrastructure for regulated EVM products, with dedicated customer pools and authorized visibility workflows.",
   openGraph: {
-    title: "Foglight - Private activity on existing EVM rails",
+    title: "Foglight - The privacy of a financial account, on public chains",
     description:
-      "Per-customer privacy-pool infrastructure for regulated EVM products.",
+      "Dedicated privacy pools for regulated EVM products, with authorized visibility for compliance, risk, and support teams.",
     url: siteUrl,
     siteName: "Foglight",
     type: "website",
@@ -27,15 +36,15 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Foglight - Private activity on existing EVM rails",
+        alt: "Foglight - The privacy of a financial account, on public chains",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foglight - Private activity on existing EVM rails",
+    title: "Foglight - Privacy for regulated EVM products",
     description:
-      "Per-customer privacy-pool infrastructure for regulated EVM products.",
+      "Dedicated privacy pools on existing EVM rails, with authorized visibility workflows.",
     images: ["/opengraph-image"],
   },
 };
@@ -46,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${baskervville.variable} h-full antialiased`}>
       <body className="min-h-full">{children}</body>
     </html>
   );

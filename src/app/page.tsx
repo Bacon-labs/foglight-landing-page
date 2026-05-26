@@ -1,12 +1,13 @@
 import Image from "next/image";
+import { WorkflowDisclosure } from "./components/WorkflowDisclosure";
 
 const contactHref = "https://x.com/FoglightPrivacy";
 
 const heroRows = [
-  ["Report", "Foglight privacy infrastructure"],
-  ["Switch", "Public graph → customer privacy pool"],
-  ["Built for", "Wallets, neobanks, and chains"],
-  ["Outcome", "Privacy without a new L1"],
+  ["Public view", "Settlement surface only"],
+  ["Customer pool", "Activity behind your boundary"],
+  ["Team records", "Keys stay with your team"],
+  ["Existing rails", "Supported EVM chains"],
 ];
 
 const comparisonRows = [
@@ -44,6 +45,21 @@ const boundaryRows = [
   ["Not regulatory theater", "The product boundary is narrow enough to evaluate."],
 ];
 
+const problemCards = [
+  {
+    title: "Public data becomes competitive intelligence.",
+    body: "Balances, counterparties, vendors, payroll, treasury flows, and user behavior are readable by anyone watching the chain.",
+  },
+  {
+    title: "Existing privacy tools push users away.",
+    body: "They send your users into systems your team can't touch.",
+  },
+  {
+    title: "Manual disclosure breaks under pressure.",
+    body: "When something goes wrong, you can't be reconstructing activity from screenshots or chasing users for cooperation.",
+  },
+];
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -61,21 +77,16 @@ function XLogo() {
   );
 }
 
-function ReportMark() {
-  return (
-    <div className="report-mark" aria-hidden="true">
-      <div className="report-mark-word">Foglight</div>
-      <Image src="/logo-mark-blue-on-white.png" alt="" width={76} height={76} priority />
-    </div>
-  );
-}
-
 function HeroReport() {
   return (
     <div className="artifact artifact-hero" aria-label="Foglight report visual">
       <div className="artifact-top">
         <div className="artifact-scan" aria-hidden="true" />
-        <ReportMark />
+        <div className="hero-crt-field" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
         <div className="hero-type-lockup">
           <p className="eyebrow">Privacy infrastructure for regulated operators</p>
           <h1>The privacy of a financial account, on public chains.</h1>
@@ -97,20 +108,36 @@ function HeroReport() {
   );
 }
 
-function MiniGraph() {
+function ProblemDiagram() {
   return (
-    <div className="mini-graph" aria-hidden="true">
-      <svg viewBox="0 0 720 220" fill="none">
-        <path d="M43 157 C124 89 188 104 255 139 C347 188 388 51 486 78 C557 98 598 159 680 95" />
-        <path className="private-line" d="M255 139 C338 114 414 107 486 78" />
-        <circle cx="43" cy="157" r="6" />
-        <circle cx="255" cy="139" r="6" />
-        <circle cx="486" cy="78" r="6" />
-        <circle cx="680" cy="95" r="6" />
-      </svg>
+    <div className="glass-diagram" aria-hidden="true">
       <span className="graph-caption graph-caption-left">public graph</span>
       <span className="graph-caption graph-caption-center">privacy pool</span>
       <span className="graph-caption graph-caption-right">team records</span>
+      <svg viewBox="0 0 720 420" fill="none">
+        <path className="public-path" d="M86 270 C166 156 245 185 318 236 C403 296 440 96 538 132 C606 156 642 214 680 170" />
+        <path className="private-line" d="M318 236 C382 198 449 171 538 132" />
+        <circle cx="86" cy="270" r="8" />
+        <circle cx="318" cy="236" r="8" />
+        <circle cx="538" cy="132" r="8" />
+        <circle cx="680" cy="170" r="8" />
+      </svg>
+      <div className="diagram-node node-one">
+        <span>0x7a</span>
+        <strong>payroll</strong>
+      </div>
+      <div className="diagram-node node-two">
+        <span>0x2c</span>
+        <strong>vendor</strong>
+      </div>
+      <div className="diagram-node node-three">
+        <span>0x91</span>
+        <strong>treasury</strong>
+      </div>
+      <div className="observer-chip">public observer reads every edge</div>
+      <div className="privacy-boundary">
+        <span>customer privacy pool</span>
+      </div>
     </div>
   );
 }
@@ -127,6 +154,7 @@ export default function Home() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="#problem">Problem</a>
+          <a href="#workflow">Workflow</a>
           <a href="#comparison">Comparison</a>
           <a href="#boundaries">Boundaries</a>
         </nav>
@@ -151,18 +179,28 @@ export default function Home() {
       </section>
 
       <section id="problem" className="report-section report-section-light">
-        <div className="section-artifact problem-artifact">
-          <div className="section-panel light-panel">
+        <div className="problem-grid">
+          <div className="problem-lead section-panel light-panel glow-card">
             <div className="panel-label">Problem</div>
             <h2>Public chains turn accounts into glass boxes.</h2>
             <p>
               For consumers and businesses, universal visibility isn&apos;t transparency. It&apos;s exposure, and a reason to choose something else.
             </p>
           </div>
-          <div className="section-panel graph-panel">
-            <MiniGraph />
+          <div className="problem-diagram-card section-panel graph-panel glow-card">
+            <ProblemDiagram />
           </div>
+          {problemCards.map((card) => (
+            <article className="problem-card glow-card" key={card.title}>
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
+            </article>
+          ))}
         </div>
+      </section>
+
+      <section id="workflow" className="report-section report-section-dark workflow-section">
+        <WorkflowDisclosure />
       </section>
 
       <section id="comparison" className="report-section report-section-dark">

@@ -1,26 +1,38 @@
 import type { Metadata } from "next";
-import { Baskervville, Geist_Mono, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
+const inter = localFont({
   variable: "--font-inter",
-  subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  src: [
+    { path: "./fonts/Inter-400.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/Inter-500.ttf", weight: "500", style: "normal" },
+    { path: "./fonts/Inter-600.ttf", weight: "600", style: "normal" },
+    { path: "./fonts/Inter-700.ttf", weight: "700", style: "normal" },
+    { path: "./fonts/Inter-800.ttf", weight: "800", style: "normal" },
+  ],
 });
 
-const baskervville = Baskervville({
+const baskervville = localFont({
   variable: "--font-baskervville",
-  subsets: ["latin"],
   display: "swap",
-  weight: ["400"],
-  style: ["normal", "italic"],
+  src: [
+    { path: "./fonts/Baskervville-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/Baskervville-Italic.ttf", weight: "400", style: "italic" },
+  ],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = localFont({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
   display: "swap",
+  src: [
+    { path: "./fonts/GeistMono-400.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/GeistMono-500.ttf", weight: "500", style: "normal" },
+    { path: "./fonts/GeistMono-600.ttf", weight: "600", style: "normal" },
+    { path: "./fonts/GeistMono-700.ttf", weight: "700", style: "normal" },
+    { path: "./fonts/GeistMono-800.ttf", weight: "800", style: "normal" },
+  ],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://foglight.xyz";

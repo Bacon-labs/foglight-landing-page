@@ -12,13 +12,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://foglight.xyz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Foglight - Compliant privacy for existing EVM rails",
+  title: "Foglight - Pilot private flows on existing EVM rails",
   description:
-    "Foglight lets wallets, chains, stablecoin issuers, and neobanks add private balances and transactions without launching a new network or losing compliance visibility.",
+    "Per-customer privacy-pool infrastructure for regulated wallets, chains, stablecoin issuers, and neobanks testing private EVM flows with authorized compliance visibility.",
   openGraph: {
-    title: "Foglight - Compliant privacy for existing EVM rails",
+    title: "Foglight - Pilot private flows on existing EVM rails",
     description:
-      "Private account infrastructure for existing EVM chains, wallets, stablecoin issuers, and neobanks.",
+      "Per-customer privacy-pool infrastructure for regulated EVM pilots.",
     url: siteUrl,
     siteName: "Foglight",
     type: "website",
@@ -27,15 +27,15 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Foglight - Privacy for existing EVM rails",
+        alt: "Foglight - Pilot private flows on existing EVM rails",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foglight - Compliant privacy for existing EVM rails",
+    title: "Foglight - Pilot private flows on existing EVM rails",
     description:
-      "Private account infrastructure for existing EVM chains, wallets, stablecoin issuers, and neobanks.",
+      "Per-customer privacy-pool infrastructure for regulated EVM pilots.",
     images: ["/opengraph-image"],
   },
 };

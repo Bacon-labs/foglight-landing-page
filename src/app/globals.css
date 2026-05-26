@@ -16,6 +16,9 @@
   --blue: #0047ff;
   --blue-glow: rgba(0, 71, 255, 0.28);
   --phosphor-glow: rgba(238, 247, 255, 0.5);
+  --photon: rgba(246, 251, 255, 0.72);
+  --photon-soft: rgba(238, 247, 255, 0.26);
+  --photon-blue: rgba(114, 163, 255, 0.24);
 }
 
 @theme inline {
@@ -65,7 +68,8 @@ a {
   min-height: 100vh;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 0%, rgba(238, 243, 247, 0.08), transparent 24rem),
+    radial-gradient(circle at 50% -6%, rgba(238, 247, 255, 0.16), transparent 28rem),
+    radial-gradient(circle at 92% 18%, rgba(0, 71, 255, 0.1), transparent 24rem),
     var(--black);
 }
 
@@ -75,10 +79,12 @@ a {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.28;
+  opacity: 0.36;
   background:
-    repeating-linear-gradient(0deg, rgba(238, 243, 247, 0.035) 0 1px, transparent 1px 5px),
-    radial-gradient(circle at 50% 40%, transparent 0%, rgba(0, 0, 0, 0.45) 76%);
+    radial-gradient(circle at center, rgba(238, 247, 255, 0.18) 0 0.75px, transparent 1px),
+    repeating-linear-gradient(0deg, rgba(238, 243, 247, 0.022) 0 1px, transparent 1px 5px),
+    radial-gradient(circle at 50% 36%, transparent 0%, rgba(0, 0, 0, 0.54) 78%);
+  background-size: 4px 4px, auto, auto;
   mix-blend-mode: screen;
 }
 
@@ -94,11 +100,13 @@ a {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  min-height: 4.7rem;
-  border-bottom: 1px solid var(--line-light);
-  background: rgba(5, 6, 4, 0.82);
+  min-height: 4.25rem;
+  border-bottom: 0;
+  background:
+    linear-gradient(180deg, rgba(246, 251, 255, 0.055), transparent),
+    rgba(5, 6, 4, 0.74);
   color: var(--paper);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px) saturate(1.18);
 }
 
 .brand-lockup {
@@ -106,9 +114,9 @@ a {
   align-items: center;
   gap: 0.72rem;
   padding-left: clamp(1rem, 3vw, 2.5rem);
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
+  font-size: clamp(0.88rem, 0.74vw, 0.96rem);
+  font-weight: 740;
+  letter-spacing: -0.04em;
 }
 
 .brand-lockup img {
@@ -125,8 +133,8 @@ a {
   gap: clamp(1.4rem, 3vw, 3rem);
   color: rgba(238, 243, 247, 0.7);
   font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.17em;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
@@ -145,16 +153,16 @@ a {
 
 .button {
   display: inline-flex;
-  min-height: 3rem;
+  min-height: 2.78rem;
   align-items: center;
   justify-content: center;
   border: 1px solid currentColor;
   border-radius: 0;
-  padding: 0.86rem 1.18rem;
+  padding: 0.78rem 1.04rem;
   font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.095em;
+  letter-spacing: 0.12em;
   line-height: 1;
   text-transform: uppercase;
   transition:
@@ -188,18 +196,20 @@ a {
 }
 
 .hero-section {
-  min-height: calc(100vh - 4.7rem);
-  padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2.8rem) clamp(2.4rem, 5vw, 5rem);
+  min-height: auto;
+  padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2.8rem) clamp(3rem, 5vw, 5.5rem);
 }
 
 .page-noise {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.32;
+  opacity: 0.44;
   background:
+    radial-gradient(circle at 42% 18%, rgba(246, 251, 255, 0.16), transparent 19rem),
+    radial-gradient(circle at 82% 70%, rgba(0, 71, 255, 0.14), transparent 23rem),
     linear-gradient(90deg, transparent 0%, rgba(238, 243, 247, 0.06) 45%, transparent 70%),
-    repeating-linear-gradient(90deg, rgba(238, 243, 247, 0.035) 0 1px, transparent 1px 6px);
+    repeating-linear-gradient(90deg, rgba(238, 243, 247, 0.026) 0 1px, transparent 1px 7px);
   animation: slow-scan 18s linear infinite;
 }
 
@@ -215,11 +225,14 @@ a {
   border: 1px solid rgba(238, 247, 255, 0.72);
   border-radius: 1.05rem;
   background:
-    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.72), transparent 28rem),
-    linear-gradient(180deg, var(--phosphor), var(--paper));
+    radial-gradient(circle at 22% 8%, rgba(255, 255, 255, 0.94), transparent 19rem),
+    radial-gradient(circle at 76% 18%, rgba(160, 197, 255, 0.24), transparent 28rem),
+    linear-gradient(180deg, rgba(246, 251, 255, 0.98), var(--paper));
   color: var(--ink);
   box-shadow:
-    0 0 22px rgba(238, 247, 255, 0.22),
+    0 0 16px rgba(238, 247, 255, 0.3),
+    0 0 68px rgba(238, 247, 255, 0.2),
+    0 0 132px rgba(104, 155, 255, 0.1),
     0 0 0 1px rgba(238, 243, 247, 0.1),
     0 42px 110px rgba(0, 0, 0, 0.45);
 }
@@ -231,10 +244,12 @@ a {
   z-index: 2;
   pointer-events: none;
   background:
-    repeating-linear-gradient(0deg, rgba(16, 22, 26, 0.07) 0 1px, rgba(255, 255, 255, 0.05) 1px 2px, transparent 2px 7px),
-    repeating-linear-gradient(90deg, rgba(16, 22, 26, 0.025) 0 1px, transparent 1px 9px);
-  mix-blend-mode: multiply;
-  opacity: 0.58;
+    radial-gradient(circle at center, rgba(18, 26, 31, 0.14) 0 0.6px, transparent 0.9px),
+    repeating-linear-gradient(0deg, rgba(16, 22, 26, 0.052) 0 1px, rgba(255, 255, 255, 0.07) 1px 2px, transparent 2px 6px),
+    repeating-linear-gradient(90deg, rgba(16, 22, 26, 0.018) 0 1px, transparent 1px 8px);
+  background-size: 3px 3px, auto, auto;
+  mix-blend-mode: soft-light;
+  opacity: 0.76;
 }
 
 .artifact::after {
@@ -244,8 +259,9 @@ a {
   z-index: 3;
   pointer-events: none;
   box-shadow:
-    inset 0 0 0 10px rgba(16, 17, 15, 0.035),
-    inset 0 0 70px rgba(255, 255, 255, 0.36);
+    inset 0 0 0 10px rgba(16, 17, 15, 0.028),
+    inset 0 0 80px rgba(255, 255, 255, 0.42),
+    inset 0 0 180px rgba(0, 71, 255, 0.055);
 }
 
 .artifact-hero {
@@ -258,9 +274,10 @@ a {
   overflow: hidden;
   border-bottom: 1px solid var(--line-dark);
   background:
-    radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.92), transparent 15rem),
-    radial-gradient(circle at 76% 18%, rgba(0, 71, 255, 0.08), transparent 23rem),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.34), transparent 38%, rgba(0, 71, 255, 0.035) 76%, transparent),
+    radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.96), transparent 15rem),
+    radial-gradient(circle at 72% 18%, rgba(164, 198, 255, 0.28), transparent 27rem),
+    radial-gradient(circle at 84% 72%, rgba(246, 251, 255, 0.38), transparent 22rem),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.36), transparent 38%, rgba(0, 71, 255, 0.055) 76%, transparent),
     var(--phosphor);
 }
 
@@ -269,8 +286,8 @@ a {
   inset: -30% 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.72), transparent);
-  opacity: 0.28;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.68), rgba(182, 211, 255, 0.26), transparent);
+  opacity: 0.24;
   transform: translateY(-70%);
   animation: report-scan 8.5s ease-in-out infinite;
 }
@@ -285,9 +302,16 @@ a {
 .hero-crt-field span {
   position: absolute;
   display: block;
-  border: 1px solid rgba(16, 17, 15, 0.09);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 46px rgba(238, 247, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.08) 46%, rgba(114, 163, 255, 0.1)),
+    rgba(246, 251, 255, 0.1);
+  backdrop-filter: blur(18px) saturate(1.24);
+  box-shadow:
+    0 0 42px rgba(246, 251, 255, 0.34),
+    0 0 96px rgba(114, 163, 255, 0.16),
+    inset 0 1px 1px rgba(255, 255, 255, 0.48),
+    inset 0 -1px 12px rgba(0, 71, 255, 0.035);
 }
 
 .hero-crt-field span:nth-child(1) {
@@ -432,6 +456,79 @@ a {
   justify-content: flex-end;
 }
 
+.hero-problem-transition {
+  position: relative;
+  z-index: 1;
+  height: clamp(12rem, 18vw, 20rem);
+  margin-top: clamp(-7rem, -6vw, -3.25rem);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(5, 6, 4, 0) 0%, rgba(5, 6, 4, 0.96) 22%, rgba(238, 238, 231, 0.18) 62%, var(--paper-warm) 100%);
+}
+
+.hero-problem-transition::before,
+.hero-problem-transition::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-problem-transition::before {
+  background:
+    radial-gradient(circle at 16% 68%, rgba(246, 251, 255, 0.38), transparent 17rem),
+    radial-gradient(circle at 56% 42%, rgba(114, 163, 255, 0.24), transparent 22rem),
+    radial-gradient(circle at 82% 74%, rgba(246, 251, 255, 0.28), transparent 20rem);
+  filter: blur(2px);
+}
+
+.hero-problem-transition::after {
+  opacity: 0.34;
+  background:
+    radial-gradient(circle at center, rgba(238, 247, 255, 0.22) 0 0.7px, transparent 1px),
+    linear-gradient(90deg, transparent, rgba(238, 247, 255, 0.11), transparent);
+  background-size: 5px 5px, auto;
+  mix-blend-mode: screen;
+}
+
+.photon-pane {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(246, 251, 255, 0.28);
+  background:
+    linear-gradient(135deg, rgba(246, 251, 255, 0.24), rgba(246, 251, 255, 0.06) 54%, rgba(114, 163, 255, 0.08)),
+    rgba(238, 247, 255, 0.07);
+  backdrop-filter: blur(22px) saturate(1.26);
+  box-shadow:
+    0 0 56px rgba(238, 247, 255, 0.24),
+    0 0 120px rgba(114, 163, 255, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.36);
+}
+
+.pane-one {
+  left: 9%;
+  top: 28%;
+  width: clamp(14rem, 23vw, 27rem);
+  height: clamp(5.6rem, 8vw, 9rem);
+  transform: rotate(-4deg);
+}
+
+.pane-two {
+  right: 14%;
+  top: 8%;
+  width: clamp(12rem, 18vw, 23rem);
+  height: clamp(8rem, 13vw, 15rem);
+  transform: rotate(8deg);
+}
+
+.pane-three {
+  left: 46%;
+  bottom: 4%;
+  width: clamp(16rem, 26vw, 31rem);
+  height: clamp(4.8rem, 7vw, 8rem);
+  transform: rotate(2deg);
+}
+
 .report-section {
   padding: clamp(2rem, 5vw, 6rem) clamp(1rem, 3vw, 2.8rem);
 }
@@ -439,6 +536,30 @@ a {
 .report-section-light {
   background: var(--paper-warm);
   color: var(--ink);
+}
+
+.problem-section {
+  position: relative;
+  margin-top: -1px;
+  padding-top: clamp(2.4rem, 5vw, 5.6rem);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.86), transparent 21rem),
+    radial-gradient(circle at 82% 8%, rgba(164, 198, 255, 0.2), transparent 27rem),
+    linear-gradient(180deg, var(--paper-warm) 0%, #ece9df 100%);
+}
+
+.problem-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  background:
+    radial-gradient(circle at center, rgba(16, 17, 15, 0.12) 0 0.65px, transparent 0.95px),
+    linear-gradient(90deg, rgba(16, 17, 15, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(16, 17, 15, 0.03) 1px, transparent 1px);
+  background-size: 4px 4px, 4.8rem 4.8rem, 4.8rem 4.8rem;
+  mix-blend-mode: multiply;
 }
 
 .report-section-dark {
@@ -465,17 +586,23 @@ a {
 }
 
 .problem-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   width: min(100%, 1640px);
   margin: 0 auto;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1rem;
+  gap: clamp(0.75rem, 1.2vw, 1.2rem);
 }
 
 .problem-lead {
-  grid-column: span 12;
-  border: 1px solid var(--line-dark);
-  border-radius: 0.85rem;
+  min-height: clamp(25rem, 39vw, 34rem);
+  grid-column: span 6;
+  border: 1px solid rgba(16, 17, 15, 0.72);
+  border-radius: 1rem;
+  box-shadow:
+    0 32px 90px rgba(16, 17, 15, 0.11),
+    0 0 62px rgba(238, 247, 255, 0.34);
 }
 
 .problem-diagram-card {
@@ -487,18 +614,53 @@ a {
 
 .problem-card {
   position: relative;
-  min-height: 17rem;
-  grid-column: span 4;
+  min-height: clamp(16rem, 21vw, 21rem);
   overflow: hidden;
-  border: 1px solid rgba(16, 17, 15, 0.18);
-  border-radius: 0.85rem;
+  border: 1px solid rgba(16, 17, 15, 0.16);
+  border-radius: 1rem;
   background:
-    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.78), transparent 15rem),
-    var(--paper);
+    radial-gradient(circle at 16% 0%, rgba(255, 255, 255, 0.86), transparent 15rem),
+    radial-gradient(circle at 88% 100%, rgba(164, 198, 255, 0.18), transparent 18rem),
+    rgba(246, 251, 255, 0.68);
+  backdrop-filter: blur(18px) saturate(1.08);
+  box-shadow:
+    0 22px 70px rgba(16, 17, 15, 0.075),
+    inset 0 1px 1px rgba(255, 255, 255, 0.68);
   padding: clamp(1.5rem, 2.7vw, 2.6rem);
 }
 
+.problem-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.34;
+  background:
+    radial-gradient(circle at center, rgba(16, 17, 15, 0.13) 0 0.58px, transparent 0.9px),
+    repeating-linear-gradient(0deg, rgba(16, 17, 15, 0.04) 0 1px, transparent 1px 6px);
+  background-size: 4px 4px, auto;
+  mix-blend-mode: multiply;
+}
+
+.problem-card-1 {
+  grid-column: span 6;
+}
+
+.problem-card-2 {
+  grid-column: span 4;
+}
+
+.problem-card-3 {
+  grid-column: span 8;
+}
+
+.problem-lead.section-panel {
+  min-height: clamp(25rem, 35vw, 34rem);
+}
+
 .problem-card h3 {
+  position: relative;
+  z-index: 1;
   max-width: 17ch;
   margin: 0;
   color: var(--ink);
@@ -510,6 +672,8 @@ a {
 }
 
 .problem-card p {
+  position: relative;
+  z-index: 1;
   max-width: 31rem;
   margin: 1.25rem 0 0;
   color: var(--ink-soft);
@@ -528,10 +692,11 @@ a {
 }
 
 .glow-card:hover {
-  border-color: rgba(0, 71, 255, 0.42);
+  border-color: rgba(246, 251, 255, 0.58);
   box-shadow:
-    0 0 0 1px rgba(0, 71, 255, 0.18),
-    0 0 42px rgba(0, 71, 255, 0.16),
+    0 0 0 1px rgba(246, 251, 255, 0.22),
+    0 0 38px rgba(238, 247, 255, 0.28),
+    0 0 92px rgba(114, 163, 255, 0.12),
     0 28px 78px rgba(16, 17, 15, 0.12);
   transform: translateY(-2px);
 }
@@ -547,7 +712,7 @@ a {
   flex-direction: column;
   justify-content: flex-end;
   border-right: 1px solid var(--line-dark);
-  padding: clamp(2rem, 5vw, 5.2rem);
+  padding: clamp(2rem, 4.2vw, 4.4rem);
   background: var(--paper);
 }
 
@@ -558,9 +723,12 @@ a {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(0deg, rgba(16, 17, 15, 0.11) 0 1px, transparent 1px 6px);
+  background:
+    radial-gradient(circle at center, rgba(16, 17, 15, 0.14) 0 0.62px, transparent 0.94px),
+    repeating-linear-gradient(0deg, rgba(16, 17, 15, 0.04) 0 1px, rgba(255, 255, 255, 0.045) 1px 2px, transparent 2px 6px);
+  background-size: 4px 4px, auto;
   mix-blend-mode: multiply;
-  opacity: 0.74;
+  opacity: 0.46;
 }
 
 .panel-label {
@@ -579,22 +747,21 @@ a {
   margin: 0;
   font-family: var(--font-baskervville), Georgia, "Times New Roman", serif;
   font-weight: 400;
-  letter-spacing: -0.088em;
-  line-height: 0.83;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
   text-wrap: balance;
 }
 
 .light-panel h2 {
-  max-width: 9.4ch;
-  margin-top: 1.25rem;
-  font-size: clamp(4.2rem, 8vw, 10.4rem);
+  max-width: 12.2ch;
+  font-size: clamp(3.35rem, 5.25vw, 6.75rem);
 }
 
 .light-panel p {
   position: relative;
   z-index: 1;
   max-width: 41rem;
-  margin: 1.9rem 0 0;
+  margin: 1.45rem 0 0;
   color: var(--ink-soft);
   font-size: clamp(1.08rem, 1.35vw, 1.38rem);
   line-height: 1.48;
@@ -957,7 +1124,7 @@ a {
 
 .comparison-title .eyebrow {
   display: flex;
-  min-height: 16rem;
+  min-height: clamp(12rem, 18vw, 15rem);
   align-items: flex-end;
   border-right: 1px solid var(--line-light);
   padding: clamp(1.4rem, 3vw, 3rem);
@@ -966,11 +1133,11 @@ a {
 
 .comparison-title h2 {
   display: flex;
-  max-width: 10ch;
+  max-width: 18ch;
   align-items: flex-end;
-  padding: clamp(1.4rem, 4.4vw, 4.8rem);
+  padding: clamp(1.4rem, 3.8vw, 4.2rem);
   color: var(--paper-soft);
-  font-size: clamp(4.8rem, 9vw, 12.4rem);
+  font-size: clamp(3rem, 4.7vw, 5.9rem);
 }
 
 .comparison-table {
@@ -1031,7 +1198,7 @@ a {
 
 .boundary-top {
   display: flex;
-  min-height: clamp(25rem, 44vw, 38rem);
+  min-height: clamp(23rem, 36vw, 32rem);
   flex-direction: column;
   justify-content: flex-end;
   padding: clamp(2rem, 5vw, 5.4rem);
@@ -1045,9 +1212,9 @@ a {
 }
 
 .boundary-top h2 {
-  max-width: 10ch;
+  max-width: 12ch;
   margin-top: 1.2rem;
-  font-size: clamp(4.4rem, 8.8vw, 12rem);
+  font-size: clamp(3.4rem, 5.6vw, 7.4rem);
 }
 
 .boundary-top p {
@@ -1106,10 +1273,10 @@ a {
 }
 
 .final-copy h2 {
-  max-width: 12ch;
-  margin-top: 1rem;
+  max-width: 17ch;
+  margin-top: 0;
   color: var(--paper-soft);
-  font-size: clamp(4.2rem, 8vw, 11rem);
+  font-size: clamp(3rem, 4.9vw, 6.3rem);
 }
 
 .final-copy p:last-child {
@@ -1274,6 +1441,26 @@ a {
 
   .hero-section {
     min-height: auto;
+    padding-bottom: 4rem;
+  }
+
+  .hero-problem-transition {
+    height: 10rem;
+    margin-top: -4.2rem;
+  }
+
+  .pane-one {
+    left: -18%;
+    top: 36%;
+  }
+
+  .pane-two {
+    right: -26%;
+  }
+
+  .pane-three {
+    left: 28%;
+    bottom: 12%;
   }
 
   .artifact,
@@ -1376,6 +1563,10 @@ a {
     min-height: auto;
   }
 
+  .problem-lead.section-panel {
+    min-height: 22rem;
+  }
+
   .problem-diagram-card {
     min-height: 22rem;
   }
@@ -1390,7 +1581,7 @@ a {
   .comparison-title h2,
   .boundary-top h2,
   .final-copy h2 {
-    font-size: clamp(4rem, 18vw, 6.5rem);
+    font-size: clamp(2.85rem, 12vw, 4.7rem);
   }
 
   .light-panel p,

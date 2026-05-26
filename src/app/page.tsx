@@ -131,17 +131,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="problem" className="report-section report-section-light">
+      <div className="hero-problem-transition" aria-hidden="true">
+        <span className="photon-pane pane-one" />
+        <span className="photon-pane pane-two" />
+        <span className="photon-pane pane-three" />
+      </div>
+
+      <section id="problem" className="report-section report-section-light problem-section">
         <div className="problem-grid">
           <div className="problem-lead section-panel light-panel glow-card">
-            <div className="panel-label">Problem</div>
             <h2>Public chains turn accounts into glass boxes.</h2>
             <p>
               For consumers and businesses, universal visibility isn&apos;t transparency. It&apos;s exposure, and a reason to choose something else.
             </p>
           </div>
-          {problemCards.map((card) => (
-            <article className="problem-card glow-card" key={card.title}>
+          {problemCards.map((card, index) => (
+            <article className={`problem-card problem-card-${index + 1} glow-card`} key={card.title}>
               <h3>{card.title}</h3>
               <p>{card.body}</p>
             </article>
@@ -195,10 +200,9 @@ export default function Home() {
       <section className="report-section report-section-dark final-section">
         <div className="final-artifact">
           <div className="final-copy">
-            <p className="eyebrow">30 minutes. Product and architecture first.</p>
             <h2>Add privacy without sending users off your rails.</h2>
             <p>
-              If you&apos;re building a wallet, chain, stablecoin product, exchange, neobank, or payment platform, talk to Foglight about the privacy workflow your users and compliance team actually need. No deck required.
+              If you&apos;re building a wallet, chain, stablecoin product, exchange, neobank, or payment platform, talk to Foglight about the privacy workflow your users and compliance team actually need.
             </p>
           </div>
           <a className="button button-blue" href={contactHref} target="_blank" rel="noreferrer">

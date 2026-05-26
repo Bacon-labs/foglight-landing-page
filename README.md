@@ -10,7 +10,7 @@ Vercel-ready landing page for Foglight: compliant privacy infrastructure for exi
 - Tailwind CSS v4
 - Geist via `next/font`
 - pnpm 10 lockfile
-- Node >=20.18.0
+- Node 20.x
 
 This uses the standard Vercel-native path: static/server-rendered App Router page, no client components, no animation library, no component kit, no CMS, and no analytics package yet.
 

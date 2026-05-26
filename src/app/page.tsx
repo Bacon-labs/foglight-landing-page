@@ -87,6 +87,19 @@ const integrationRows = [
   ["Audit logs", "Authorized access only"],
 ];
 
+const logoAsciiTexture = String.raw`
+KYC_GATE  VIEW_KEY  PRIVACY_POOL  EVM_TRACE  DISCLOSE  AUDIT_LOG  CUSTOMER_HELD
+  01 ░▒▓ ENCRYPTED BALANCE ▓▒░  02 PRIVATE TRANSFER  03 AUTHORIZED REVEAL
+TRACE: 0x71f...  POOL: A17  KEY: customer-held  POLICY: pass  GAS: base
+      ░░▒▒▓▓████▓▓▒▒░░        foglight          ░░▒▒▓▓████▓▓▒▒░░
+PUBLIC: masked       COMPLIANCE: visible-on-request       USER: private
+  KYC_GATE  VIEW_KEY  PRIVACY_POOL  EVM_TRACE  DISCLOSE  AUDIT_LOG  CUSTOMER_HELD
+    01 ░▒▓ ENCRYPTED BALANCE ▓▒░  02 PRIVATE TRANSFER  03 AUTHORIZED REVEAL
+TRACE: 0x71f...  POOL: A17  KEY: customer-held  POLICY: pass  GAS: base
+      ░░▒▒▓▓████▓▓▒▒░░        foglight          ░░▒▒▓▓████▓▓▒▒░░
+PUBLIC: masked       COMPLIANCE: visible-on-request       USER: private
+`;
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -123,6 +136,22 @@ function CircleCheck() {
   );
 }
 
+function LogoMotionField() {
+  return (
+    <div className="logo-motion-stage" aria-hidden="true">
+      <div className="logo-motion-glow" />
+      <div className="logo-wordmark logo-wordmark-blue" />
+      <div className="logo-wordmark logo-wordmark-white" />
+      <div className="logo-ascii-mask">
+        <pre>{logoAsciiTexture}</pre>
+      </div>
+      <div className="logo-scanline" />
+      <div className="logo-spark logo-spark-a" />
+      <div className="logo-spark logo-spark-b" />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[var(--paper)] text-[var(--ink)]">
@@ -139,6 +168,7 @@ export default function Home() {
           <div className="orbit-dot orbit-dot-a" />
           <div className="orbit-dot orbit-dot-b" />
           <div className="orbit-dot orbit-dot-c" />
+          <LogoMotionField />
         </div>
 
         <header className="relative z-10 mx-auto flex h-24 w-full max-w-[92rem] items-center justify-between px-5 sm:px-8 lg:px-16">

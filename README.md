@@ -1,6 +1,6 @@
 # Foglight landing page
 
-Vercel-ready landing page for Foglight.
+Vercel-ready landing page for Foglight: compliant privacy infrastructure for existing EVM chains.
 
 ## Stack
 
@@ -8,10 +8,11 @@ Vercel-ready landing page for Foglight.
 - React 19
 - TypeScript
 - Tailwind CSS v4
-- Geist Sans / Geist Mono via `next/font`
+- Geist via `next/font`
 - pnpm 10 lockfile
+- Node >=20.18.0
 
-This intentionally starts with the most standard Vercel path: Next.js App Router, TypeScript, Tailwind, and a minimal dependency graph. No animation library, component kit, analytics, or CMS is installed yet. Add those only after the landing-page brief justifies them.
+This uses the standard Vercel-native path: static/server-rendered App Router page, no client components, no animation library, no component kit, no CMS, and no analytics package yet.
 
 ## Local development
 
@@ -42,14 +43,22 @@ Expected auto-detection:
 - Output directory: managed by Next.js, leave default
 - Node version: use Node >=20.18, matching `.node-version` and `package.json#engines`
 
-## Design direction currently encoded
+Set `NEXT_PUBLIC_SITE_URL` to the production URL once the domain is final. The default metadata URL is `https://foglight.xyz`, but that domain still needs DNS/Vercel setup before launch.
 
-The scaffold borrows Vercel-style discipline rather than a finished Foglight brand:
+## Design direction encoded
 
-- Geist type system
-- white canvas, near-black text
-- shadow-as-border cards instead of heavy borders
-- restrained blue badge as functional status, not decoration
-- generous spacing and compressed display type
+The page follows the supplied brief:
 
-This is a baseline, not the final art direction. Final copy, section order, proof points, and conversion target should be planned before expanding the page.
+- deep institutional blue, not purple
+- pale neutral background, deep blue-black text, muted secondary text
+- generous whitespace and restrained hierarchy inspired by Harmony
+- muted, cool color posture inspired by Contra Labs
+- subtle CSS-only hero motion inspired by Temple Digital Group
+- compact, low-text clarity inspired by Avici
+- no glassmorphism, neon crypto palette, token content, fake testimonials, fake customer logos, or invented traction
+
+## Current conversion path
+
+The primary CTA links to `@FoglightPrivacy` because no live email inbox, booking link, or form backend was provided. Replace this with a real form, Resend/Plunk/Formspree endpoint, or booking URL before serious outreach.
+
+The one pager is included at `/foglight-onepager-preseed.pdf`.

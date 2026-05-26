@@ -1,53 +1,96 @@
 # Foglight Landing Page Brief
 
-Status: planning required before final landing-page build.
+Status: encoded into the current page implementation.
 
-## Current technical foundation
+## Project context
 
-- Repository: `Bacon-labs/foglight-landing-page`
-- Framework: Next.js 16 App Router
-- UI: React 19 + TypeScript
-- Styling: Tailwind CSS v4
-- Package manager: pnpm
-- Deployment target: Vercel
+Foglight is compliant onchain privacy infrastructure for chains, wallet providers, neobanks, and e-money issuers. The company is pre-seed and the landing page has to serve three audiences:
 
-## Product vocabulary guardrail
+1. VCs arriving from cold DMs, warm intros, or X.
+2. Pilot prospects evaluating design-partner conversations.
+3. Crypto-native readers discovering Foglight through X.
 
-Foglight should be described as onchain per-customer privacy-pool infrastructure.
+The page is a single scrollable page that can later expand into deeper product pages.
 
-Avoid calling it “privacy accounts” unless explicitly marked as a UX shorthand.
+## Goals
 
-## Working design posture
+- Establish credibility quickly: positioning, team, track record.
+- Create one clear conversion path: talk to Foglight.
+- Generate inbound for pilot programs and pre-seed conversations.
+- Act as the canonical URL for the X profile and outreach.
 
-Start from a precise Vercel-like baseline:
+## Design references
 
-- monochrome first
-- Geist typography
-- one functional accent color
-- shadow-as-border cards
-- low decorative noise
-- technical clarity over generic SaaS gloss
+- `tryharmony.ai/about`: generous whitespace, restrained font sizes, clean section rhythm.
+- `contralabs.com`: muted, cool, desaturated feel.
+- `templedigitalgroup.com`: simple first-screen impact and subtle hero motion.
+- `avici.money`: low text volume with fast comprehension.
 
-Possible alternative references to evaluate after the brief:
+## Brand direction
 
-- Linear: darker, sharper, product-led
-- Stripe: more polished fintech/infrastructure gradient language
-- Supabase: developer/product hybrid with darker technical surfaces
-- Vercel: cleanest default for infra credibility
+- Deep blue rather than purple.
+- Primary blue: `#0047FF` / `#1F4FFF`.
+- Background: white / pale neutral.
+- Text primary: `#0A0E27`.
+- Text secondary: `#5F6478`.
+- Accent: soft blue/cyan.
+- Avoid pure black, neon colors, gradient backgrounds, and glassmorphism.
+- Use one restrained sans family. Current implementation uses Geist Sans.
 
-## Open planning questions
+## Logo assets used
 
-1. Primary audience: protocols, wallets, exchanges, app developers, institutions, or privacy researchers?
-2. Conversion goal: request demo, join waitlist, contact founder, read docs, or understand the thesis?
-3. Hero claim: what is the strongest sentence Foglight can defend today?
-4. Proof: what can we safely show now, diagrams, testnet status, partners, benchmarks, docs, audits, screenshots?
-5. Technical depth: should the first page explain privacy pools, or stay executive and link deeper?
-6. Tone: institutional/privacy-infra, developer-tool precise, cypherpunk, or premium fintech?
-7. Visual direction: Vercel-clean, Linear-dark, Stripe-infra, custom Foglight identity, or 2-3 variants first?
-8. Required sections: hero, problem, how it works, use cases, architecture, compliance/posture, docs CTA, FAQ?
-9. Any claims to avoid for legal, regulatory, or OPSEC reasons?
-10. Domain and deployment target: production domain now or preview-only until copy is approved?
+- `public/logo-mark-white-on-blue.png`: primary hero mark.
+- `public/logo-mark-blue-on-white.png`: nav mark.
+- `public/logo-symbol-blue.png`: footer symbol.
+- `public/logo-symbol-white.png`: dark solution section symbol.
 
-## Build principle
+## Core copy
 
-Do not fill the page with invented metrics, fake testimonials, or decorative dashboards. If a claim cannot be backed with a real product fact, leave it out or mark it as draft.
+H1:
+
+> Compliant Privacy Infrastructure for Existing EVM Chains
+
+Subhead:
+
+> Per-customer privacy pools that let regulated wallets, chains, and neobanks offer bank-level user privacy without launching a new L1.
+
+Key phrase:
+
+> Per-customer privacy pools. Same compliance story as a bank.
+
+## Product vocabulary guardrails
+
+Foglight should be described as per-customer privacy-pool infrastructure for regulated operators on existing EVM chains.
+
+Avoid:
+
+- "privacy accounts" as product framing.
+- "bank-grade" or "institutional-grade" as vague marketing copy.
+- token language.
+- compliance guarantees.
+- fake traction, fake testimonials, fake logos, and unverifiable claims.
+- cypherpunk jargon when speaking to institutional readers.
+
+## Conversion path
+
+Current CTA links to `@FoglightPrivacy` because no working email inbox, booking link, or form backend was provided.
+
+The page includes a downloadable one pager at `/foglight-onepager-preseed.pdf`.
+
+## Technical foundation
+
+- Repository: `Bacon-labs/foglight-landing-page`.
+- Framework: Next.js 16 App Router.
+- UI: React 19 + TypeScript.
+- Styling: Tailwind CSS v4.
+- Package manager: pnpm.
+- Deployment target: Vercel.
+- Static/server-rendered landing page with no client components.
+
+## Remaining decisions before public launch
+
+1. Confirm final domain and attach it to Vercel.
+2. Replace X CTA with a real email/form/booking path.
+3. Confirm whether the one pager should be public.
+4. Confirm technical claims: sub-second proving, formal verification status, audits, and pilot timing.
+5. Decide whether founder photos should be added or whether function-based cards are preferable.

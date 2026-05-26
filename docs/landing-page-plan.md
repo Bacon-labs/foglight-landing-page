@@ -1,110 +1,112 @@
-# Foglight Landing Page Plan
+# Foglight landing page plan
 
-> **For Hermes:** Use subagent-driven-development skill only if this plan grows into a multi-page site. Current scope is a single production-quality landing page.
+## Purpose
 
-**Goal:** Build a first Foglight landing page that explains the category and creates a design-partner contact surface.
+Create the canonical Foglight landing page for:
 
-**Architecture:** Single static Next.js App Router page at `/`, using server-rendered React components, Tailwind CSS v4, and no client-side JavaScript. The page stays credible by avoiding fake metrics, invented testimonials, and unverified roadmap claims.
+1. VCs evaluating the pre-seed.
+2. Pilot prospects: wallet providers, chains, neobanks, e-money issuers.
+3. Crypto-native readers arriving from X.
 
-**Tech Stack:** Next.js 16, React 19, TypeScript, Tailwind CSS v4, Geist fonts, pnpm, Vercel deployment target.
+The page should establish category, credibility, and a single conversion path without overexplaining crypto.
 
----
+## Positioning
 
-## Default assumptions after clarification timeout
+Foglight is compliant onchain privacy infrastructure for existing EVM chains.
 
-1. Primary audience: regulated crypto operators, especially exchanges, custodians, stablecoin/payment operators, institutional DeFi teams, and EVM infrastructure partners.
-2. Conversion goal: design-partner conversation through @FoglightPrivacy until a formal contact form/domain exists.
-3. Hero claim: public chains expose too much for regulated finance; Foglight provides onchain per-customer privacy-pool infrastructure on existing EVM rails, with authorized disclosure built in.
-4. Proof available now: category logic, architecture principles, and product posture. No fake partner logos, audits, benchmarks, screenshots, or metrics.
-5. Technical depth: medium. Explain the model clearly enough for operators and infrastructure people; defer deeper docs until a docs surface exists.
-6. Visual direction: Vercel-clean baseline, not a cloned Vercel page. Monochrome, Geist, precise spacing, shadow-as-border cards, restrained blue/pink/red accents only where they clarify flow.
-7. Language guardrail: use “onchain per-customer privacy-pool infrastructure.” Avoid “privacy accounts,” wallet/account-level framing, mixer/evasion framing, and claims of regulatory approval.
-8. Repo visibility: keep private until the user explicitly switches it public.
+Core line:
+
+> Per-customer privacy pools that let regulated wallets, chains, and neobanks offer bank-level user privacy without launching a new L1.
+
+Guardrails:
+
+- Say "same compliance story as a bank," not "bank-grade."
+- Avoid "privacy accounts" as product framing.
+- Avoid compliance guarantees.
+- Avoid token, roadmap, pricing, Discord, Telegram, testimonials, fake logos, and invented customer claims.
+- Use the one pager as the denser artifact. Keep the landing page tighter.
+
+## Design direction
+
+References from the brief:
+
+- Harmony: whitespace, hierarchy, section spacing.
+- Contra Labs: muted, cool, restrained color use.
+- Temple Digital Group: simple hero impact and subtle background motion.
+- Avici: low text volume, fast comprehension.
+
+Encoded visual system:
+
+- Primary blue: `#0047FF` / `#1F4FFF`.
+- Background: `#FBFCFF` with pale blue surfaces.
+- Primary text: `#0A0E27`.
+- Secondary text: `#5F6478`.
+- Accent: pale blue/cyan only.
+- Typography: single Geist Sans family via `next/font`.
+- Motion: CSS-only line/pulse field, disabled by `prefers-reduced-motion`.
 
 ## Page structure
 
-1. Navigation
-   - Foglight wordmark
-   - Anchors: Problem, Model, Operators
-   - CTA: Contact @FoglightPrivacy
+1. Header
+   - Logo top-left.
+   - Minimal nav: Product, Why now, Team.
+   - CTA: Talk to us.
 
 2. Hero
-   - Category line: Onchain privacy-pool infrastructure
-   - H1: Per-customer privacy pools for regulated crypto operators.
-   - Body: Existing EVM chains have liquidity, tooling, and distribution. They also leak customer activity. Foglight adds customer-level privacy boundaries and authorized disclosure paths without asking operators to move to a new chain.
-   - CTAs: Talk to Foglight, See the model
+   - H1: "Compliant Privacy Infrastructure for Existing EVM Chains."
+   - Subhead from brief.
+   - CTA: Talk to us.
+   - Secondary CTA: Read the one pager.
+   - Animated privacy/infrastructure card.
 
 3. Problem
-   - Public-chain finance leaks customer behavior
-   - The issue is not only UX. It is operating-model exposure.
-   - Operators need customer separation, policy controls, auditability, disclosure paths, and chain compatibility.
+   - Public blockchains expose everything by default.
+   - Two short explanatory paragraphs.
+   - Three concrete problem chips.
 
-4. Model
-   - Separate: per-customer activity is isolated into privacy pools
-   - Govern: operator policy defines disclosure and control boundaries
-   - Disclose: authorized paths support counterparties, auditors, or regulators when needed
-   - Settle: works with existing EVM rails instead of inventing a new chain
+4. Solution / How it works
+   - Per-customer privacy pools.
+   - Same compliance story as a bank.
+   - Five blocks: per-customer pools, compliance integrations, customer-held viewing keys, EVM-native, built for security.
 
-5. Operator fit
-   - Exchanges and custodians
-   - Stablecoin and payments operators
-   - Institutional DeFi venues
-   - EVM infrastructure partners
+5. Why now
+   - Regulation: EU AMLR 2027.
+   - Market momentum: Circle Gateway, Coinbase/Base privacy work, Tempo Zones.
+   - Technology readiness: modern ZK frameworks and consumer hardware.
 
-6. Boundary conditions
-   - No new chain thesis
-   - No consumer wallet-wrapper positioning
-   - No generic “hide everything” privacy story
-   - No fake compliance guarantees
+6. Who it is for
+   - Pilot programs.
+   - Pre-seed investors.
+   - Crypto-native readers.
+   - Future product-page expansion.
 
-7. Architecture panel
-   - Customer activity → Per-customer privacy pool → Existing EVM rails → Authorized disclosure
-   - Keep abstract, no fake dashboard.
+7. Team
+   - Guillaume Palayer.
+   - Zefram Lou.
+   - Szeth Vallano.
+   - Track record: Bunni and 88mph metrics as supplied in the brief.
 
-8. Final CTA
-   - Design partner ask
-   - Link to @FoglightPrivacy
+8. Contact
+   - Two paths: pilot programs and pre-seed investors.
+   - Currently both link to `@FoglightPrivacy` pending a live email/form endpoint.
 
-## Implementation tasks
+9. Footer
+   - Logo, BaconLabs SA Geneva attribution, X, one pager.
 
-### Task 1: Replace scaffold copy with real landing page
+## Technical notes
 
-**Objective:** Turn `src/app/page.tsx` into a single-page Foglight landing page.
+- Next.js 16 App Router, React 19, TypeScript, Tailwind CSS v4, pnpm.
+- No client components.
+- No analytics installed yet. Plausible or Cloudflare Analytics would match the brand better than heavier trackers.
+- One pager copied to `public/foglight-onepager-preseed.pdf`.
+- Logo assets copied to `public/`.
+- Generated Open Graph route at `/opengraph-image`.
+- `NEXT_PUBLIC_SITE_URL` should be set in Vercel once the production domain is final.
 
-**Files:**
-- Modify: `src/app/page.tsx`
+## Open decisions
 
-**Verification:**
-- Run `pnpm lint`
-- Run `pnpm typecheck`
-- Run `pnpm build`
-- Smoke test HTTP content includes hero and CTA copy
-
-### Task 2: Update metadata
-
-**Objective:** Make browser metadata match the page.
-
-**Files:**
-- Modify: `src/app/layout.tsx`
-
-**Verification:**
-- `pnpm typecheck`
-- `pnpm build`
-
-### Task 3: Preserve deployment guidance
-
-**Objective:** Keep `README.md` useful for Vercel import.
-
-**Files:**
-- Modify if needed: `README.md`
-
-**Verification:**
-- README names stack, commands, and Vercel defaults.
-
-## What not to build yet
-
-- Contact form without a real destination and consent/storage decision.
-- Analytics before the deployment domain and privacy posture are decided.
-- CMS before copy iteration proves the page needs non-developer editing.
-- Animation library before motion has a purpose.
-- Partner logos, audits, metrics, screenshots, or claims not supplied by the user.
+- Confirm contact path: email inbox, booking link, or form provider.
+- Confirm whether `foglight.xyz` is owned and should be attached to Vercel. DNS currently appears parked at Afternic and has null MX from public lookup.
+- Confirm whether the one pager should remain downloadable publicly.
+- Confirm whether the team section should include photos or remain function-based cards.
+- Confirm exact wording for technical claims such as sub-second proving and formal verification before broad public launch.

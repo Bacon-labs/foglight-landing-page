@@ -15,122 +15,149 @@ export default function OpenGraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          overflow: "hidden",
           position: "relative",
-          background: "radial-gradient(circle at 76% 18%, rgba(0,71,255,0.35), transparent 330px), radial-gradient(circle at 12% 86%, rgba(215,161,42,0.18), transparent 280px), linear-gradient(145deg, #0D1110, #121815)",
-          color: "#F3EBDD",
-          padding: "62px",
-          fontFamily: "Inter, Arial, Helvetica, sans-serif",
+          overflow: "hidden",
+          background: "linear-gradient(180deg, #F4F2EC 0%, #EFEEE8 100%)",
+          color: "#10100E",
+          fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
         <div
           style={{
             position: "absolute",
-            right: "84px",
-            top: "130px",
-            width: "430px",
-            height: "270px",
-            border: "1px solid rgba(159, 200, 255, 0.22)",
-            borderRadius: "999px",
-            background: "rgba(243,235,221,0.04)",
+            inset: 0,
+            background:
+              "linear-gradient(90deg, rgba(16,16,14,0.08) 1px, transparent 1px), linear-gradient(0deg, rgba(16,16,14,0.08) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
           }}
         />
         <div
           style={{
             position: "absolute",
-            right: "248px",
-            top: "225px",
-            width: "96px",
-            height: "96px",
-            borderRadius: "26px",
-            background: "#0047FF",
+            right: "56px",
+            top: "78px",
+            width: "392px",
+            height: "440px",
+            border: "2px solid #10100E",
+            background: "#EEF2F6",
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#FFFFFF",
-            fontSize: "48px",
-            fontWeight: 800,
-            letterSpacing: "-0.08em",
-            boxShadow: "0 22px 70px rgba(0,71,255,0.42)",
+            flexDirection: "column",
           }}
         >
-          F
+          <div
+            style={{
+              height: "200px",
+              borderBottom: "2px solid #10100E",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "52px",
+              fontWeight: 800,
+              letterSpacing: "-0.08em",
+              color: "#0047FF",
+            }}
+          >
+            Foglight
+          </div>
+          {[
+            ["Model", "Dedicated pool"],
+            ["Public view", "Settlement surface"],
+            ["Authorized", "Record produced"],
+          ].map(([label, value]) => (
+            <div
+              key={label}
+              style={{
+                display: "flex",
+                height: "58px",
+                borderBottom: "2px solid #10100E",
+                fontSize: "17px",
+              }}
+            >
+              <div
+                style={{
+                  width: "142px",
+                  borderRight: "2px solid #10100E",
+                  padding: "16px 16px",
+                  color: "rgba(16,16,14,0.55)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                {label}
+              </div>
+              <div style={{ padding: "16px 16px", fontWeight: 700 }}>{value}</div>
+            </div>
+          ))}
+          <div
+            style={{
+              height: "66px",
+              background: "#10100E",
+              color: "#FBF7ED",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "19px",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+            }}
+          >
+            Existing EVM rails
+          </div>
         </div>
         <div
           style={{
             position: "absolute",
-            right: "108px",
-            top: "278px",
-            width: "250px",
-            height: "2px",
-            background: "linear-gradient(90deg, rgba(159,200,255,0), rgba(159,200,255,0.9), rgba(159,200,255,0))",
+            left: "56px",
+            top: "52px",
+            display: "flex",
+            alignItems: "center",
+            gap: "16px",
           }}
-        />
-
-        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
+        >
           <div
             style={{
-              width: "70px",
-              height: "70px",
-              borderRadius: "20px",
+              width: "58px",
+              height: "58px",
               background: "#0047FF",
+              color: "white",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#FFFFFF",
-              fontSize: "38px",
+              fontSize: "34px",
               fontWeight: 800,
-              letterSpacing: "-0.08em",
-              boxShadow: "0 22px 70px rgba(0,71,255,0.28)",
             }}
           >
             F
           </div>
-          <div style={{ fontSize: "35px", fontWeight: 700, letterSpacing: "-0.045em" }}>Foglight</div>
+          <div style={{ fontSize: "30px", fontWeight: 800, letterSpacing: "-0.05em" }}>Foglight</div>
         </div>
-
-        <div style={{ display: "flex", flexDirection: "column", maxWidth: "820px" }}>
-          <div
-            style={{
-              fontSize: "17px",
-              fontWeight: 800,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "#9FC8FF",
-            }}
-          >
-            Privacy infrastructure for regulated EVM products
-          </div>
-          <div
-            style={{
-              marginTop: "24px",
-              fontSize: "78px",
-              lineHeight: 0.96,
-              fontWeight: 400,
-              letterSpacing: "-0.058em",
-            }}
-          >
-            The privacy of a financial account, on public chains.
-          </div>
-          <div
-            style={{
-              marginTop: "26px",
-              maxWidth: "760px",
-              fontSize: "26px",
-              lineHeight: 1.35,
-              color: "rgba(243,235,221,0.64)",
-            }}
-          >
-            Dedicated privacy pools for regulated EVM products, with authorized visibility for compliance, risk, and support teams.
-          </div>
+        <div
+          style={{
+            position: "absolute",
+            left: "56px",
+            top: "154px",
+            width: "590px",
+            fontSize: "18px",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "rgba(16,16,14,0.58)",
+          }}
+        >
+          Compliant privacy infrastructure for existing EVM chains
         </div>
-
-        <div style={{ display: "flex", gap: "34px", color: "rgba(243,235,221,0.48)", fontSize: "19px" }}>
-          <span>Dedicated pools</span>
-          <span>Existing EVM rails</span>
-          <span>Authorized visibility</span>
+        <div
+          style={{
+            position: "absolute",
+            left: "52px",
+            bottom: "58px",
+            width: "595px",
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            fontSize: "88px",
+            lineHeight: 0.84,
+            letterSpacing: "-0.075em",
+          }}
+        >
+          Private flows on public chains.
         </div>
       </div>
     ),

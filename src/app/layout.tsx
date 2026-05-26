@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Baskervville, Inter } from "next/font/google";
+import { Baskervville, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,15 +17,21 @@ const baskervville = Baskervville({
   style: ["normal", "italic"],
 });
 
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://foglight.xyz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Foglight - Privacy for regulated EVM products",
+  title: "Foglight - Private flows on public chains",
   description:
-    "Privacy infrastructure for regulated EVM products, with dedicated customer pools and authorized visibility workflows.",
+    "Compliant privacy infrastructure for existing EVM chains, with dedicated customer pools and authorized visibility workflows.",
   openGraph: {
-    title: "Foglight - The privacy of a financial account, on public chains",
+    title: "Foglight - Private flows on public chains",
     description:
       "Dedicated privacy pools for regulated EVM products, with authorized visibility for compliance, risk, and support teams.",
     url: siteUrl,
@@ -36,15 +42,15 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Foglight - The privacy of a financial account, on public chains",
+        alt: "Foglight - Private flows on public chains",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foglight - Privacy for regulated EVM products",
+    title: "Foglight - Private flows on public chains",
     description:
-      "Dedicated privacy pools on existing EVM rails, with authorized visibility workflows.",
+      "Compliant privacy infrastructure for existing EVM chains, with dedicated customer pools and authorized visibility workflows.",
     images: ["/opengraph-image"],
   },
 };
@@ -55,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${baskervville.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${baskervville.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full">{children}</body>
     </html>
   );

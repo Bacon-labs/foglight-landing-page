@@ -1,13 +1,20 @@
 import Image from "next/image";
-import { WorkflowDisclosure } from "./components/WorkflowDisclosure";
 
 const contactHref = "https://x.com/FoglightPrivacy";
 
-const heroRows = [
-  ["Public view", "Settlement surface only"],
-  ["Customer pool", "Activity behind your boundary"],
-  ["Team records", "Keys stay with your team"],
-  ["Existing rails", "Supported EVM chains"],
+const problemCards = [
+  {
+    title: "Everything is readable.",
+    body: "Balances, counterparties, payroll, vendors, trades, treasury flows, and user behavior are visible to anyone watching the chain.",
+  },
+  {
+    title: "Privacy usually means leaving your rails.",
+    body: "Most privacy tools push users into external systems your product team can't operate and your compliance team can't reach.",
+  },
+  {
+    title: "Manual disclosure breaks under pressure.",
+    body: "When something goes wrong, you can't be reconstructing activity from screenshots or chasing users for cooperation.",
+  },
 ];
 
 const comparisonRows = [
@@ -32,32 +39,18 @@ const comparisonRows = [
   },
   {
     label: "Failure mode",
-    current: "A privacy vendor can become a new dependency if records or migration depend on it staying online.",
+    current: "If your privacy vendor disappears, can you still operate?",
     foglight:
-      "Customer pools are designed so your team retains the ability to produce records and migrate.",
+      "Yes. Customer pools are designed so your team retains records and migration paths even if Foglight is gone.",
   },
 ];
 
 const boundaryRows = [
-  ["Not a public mixer", "Foglight is built for operators that need customer privacy and records."],
-  ["Not a new L1", "It runs on the EVM chains your product already supports."],
-  ["Not a compliance guarantee", "Your legal and compliance teams still define the policy."],
-  ["Not regulatory theater", "The product boundary is narrow enough to evaluate."],
-];
-
-const problemCards = [
-  {
-    title: "Public data becomes competitive intelligence.",
-    body: "Balances, counterparties, vendors, payroll, treasury flows, and user behavior are readable by anyone watching the chain.",
-  },
-  {
-    title: "Existing privacy tools push users away.",
-    body: "They send your users into systems your team can't touch.",
-  },
-  {
-    title: "Manual disclosure breaks under pressure.",
-    body: "When something goes wrong, you can't be reconstructing activity from screenshots or chasing users for cooperation.",
-  },
+  "Not a public mixer.",
+  "Not a new L1 or L2.",
+  "Not a compliance guarantee.",
+  "Not a claim of regulatory approval.",
+  "Not a way for users to hide protocol activity from authorized operator visibility.",
 ];
 
 const organizationJsonLd = {
@@ -96,47 +89,8 @@ function HeroReport() {
         </div>
       </div>
 
-      <div className="artifact-grid hero-ledger">
-        {heroRows.map(([label, value]) => (
-          <div className="artifact-row" key={label}>
-            <span>{label}</span>
-            <strong>{value}</strong>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ProblemDiagram() {
-  return (
-    <div className="glass-diagram" aria-hidden="true">
-      <span className="graph-caption graph-caption-left">public graph</span>
-      <span className="graph-caption graph-caption-center">privacy pool</span>
-      <span className="graph-caption graph-caption-right">team records</span>
-      <svg viewBox="0 0 720 420" fill="none">
-        <path className="public-path" d="M86 270 C166 156 245 185 318 236 C403 296 440 96 538 132 C606 156 642 214 680 170" />
-        <path className="private-line" d="M318 236 C382 198 449 171 538 132" />
-        <circle cx="86" cy="270" r="8" />
-        <circle cx="318" cy="236" r="8" />
-        <circle cx="538" cy="132" r="8" />
-        <circle cx="680" cy="170" r="8" />
-      </svg>
-      <div className="diagram-node node-one">
-        <span>0x7a</span>
-        <strong>payroll</strong>
-      </div>
-      <div className="diagram-node node-two">
-        <span>0x2c</span>
-        <strong>vendor</strong>
-      </div>
-      <div className="diagram-node node-three">
-        <span>0x91</span>
-        <strong>treasury</strong>
-      </div>
-      <div className="observer-chip">public observer reads every edge</div>
-      <div className="privacy-boundary">
-        <span>customer privacy pool</span>
+      <div className="artifact-grid hero-audience">
+        <p>Built for wallets, neobanks, and chains.</p>
       </div>
     </div>
   );
@@ -154,7 +108,6 @@ export default function Home() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="#problem">Problem</a>
-          <a href="#workflow">Workflow</a>
           <a href="#comparison">Comparison</a>
           <a href="#boundaries">Boundaries</a>
         </nav>
@@ -187,9 +140,6 @@ export default function Home() {
               For consumers and businesses, universal visibility isn&apos;t transparency. It&apos;s exposure, and a reason to choose something else.
             </p>
           </div>
-          <div className="problem-diagram-card section-panel graph-panel glow-card">
-            <ProblemDiagram />
-          </div>
           {problemCards.map((card) => (
             <article className="problem-card glow-card" key={card.title}>
               <h3>{card.title}</h3>
@@ -199,15 +149,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="workflow" className="report-section report-section-dark workflow-section">
-        <WorkflowDisclosure />
-      </section>
-
       <section id="comparison" className="report-section report-section-dark">
         <div className="comparison-artifact">
           <div className="comparison-title">
             <p className="eyebrow">Today vs Foglight</p>
-            <h2>Today, and with Foglight.</h2>
+            <h2>What changes when you add Foglight.</h2>
           </div>
           <div className="comparison-table" role="table" aria-label="Today compared with Foglight">
             <div className="comparison-head" role="row">
@@ -231,16 +177,15 @@ export default function Home() {
           <div className="artifact-top boundary-top">
             <div className="artifact-scan" aria-hidden="true" />
             <p className="eyebrow">Clear boundaries</p>
-            <h2>Privacy infrastructure, not regulatory theater.</h2>
+            <h2>What Foglight is not.</h2>
             <p>
               A narrower product is easier to trust. Foglight gives users privacy from public observers while keeping the records your team needs inside your operating model.
             </p>
           </div>
           <div className="artifact-grid boundary-grid">
-            {boundaryRows.map(([label, body]) => (
-              <div className="artifact-row" key={label}>
-                <span>{label}</span>
-                <strong>{body}</strong>
+            {boundaryRows.map((line) => (
+              <div className="artifact-row boundary-line" key={line}>
+                <strong>{line}</strong>
               </div>
             ))}
           </div>
@@ -252,7 +197,9 @@ export default function Home() {
           <div className="final-copy">
             <p className="eyebrow">30 minutes. Product and architecture first.</p>
             <h2>Add privacy without sending users off your rails.</h2>
-            <p>No deck required.</p>
+            <p>
+              If you&apos;re building a wallet, chain, stablecoin product, exchange, neobank, or payment platform, talk to Foglight about the privacy workflow your users and compliance team actually need. No deck required.
+            </p>
           </div>
           <a className="button button-blue" href={contactHref} target="_blank" rel="noreferrer">
             Talk to Foglight

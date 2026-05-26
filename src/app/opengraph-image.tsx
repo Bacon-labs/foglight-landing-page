@@ -19,13 +19,6 @@ export default async function OpenGraphImage() {
   const scanline =
     "repeating-linear-gradient(0deg, rgba(16,22,26,0.07) 0 1px, rgba(255,255,255,0.05) 1px 2px, transparent 2px 7px)";
 
-  const ledgerRows = [
-    ["Public view", "Settlement surface only"],
-    ["Customer pool", "Activity behind your boundary"],
-    ["Team records", "Keys stay with your team"],
-    ["Existing rails", "Supported EVM chains"],
-  ];
-
   return new ImageResponse(
     (
       <div
@@ -143,47 +136,23 @@ export default async function OpenGraphImage() {
             style={{
               flex: 1,
               display: "flex",
+              alignItems: "center",
+              padding: "0 52px",
               background: "#050604",
               color: "#EEF3F7",
             }}
           >
-            {ledgerRows.map(([label, value]) => (
-              <div
-                key={label}
-                style={{
-                  flex: 1,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  gap: 10,
-                  padding: "16px 24px",
-                  borderRight: "2px solid rgba(238,243,247,0.44)",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 800,
-                    letterSpacing: 3.2,
-                    textTransform: "uppercase",
-                    color: "rgba(238,243,247,0.56)",
-                  }}
-                >
-                  {label}
-                </div>
-                <div
-                  style={{
-                    fontSize: 22,
-                    fontWeight: 800,
-                    letterSpacing: 1.3,
-                    lineHeight: 1.06,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {value}
-                </div>
-              </div>
-            ))}
+            <div
+              style={{
+                fontSize: 28,
+                fontWeight: 800,
+                letterSpacing: 1.8,
+                lineHeight: 1.05,
+                textTransform: "uppercase",
+              }}
+            >
+              Built for wallets, neobanks, and chains.
+            </div>
           </div>
         </div>
       </div>

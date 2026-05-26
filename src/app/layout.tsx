@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Foglight",
-  description: "Foglight landing page.",
+  title: "Foglight | Per-customer privacy pools for regulated crypto operators",
+  description:
+    "Foglight builds onchain per-customer privacy-pool infrastructure for regulated crypto operators on existing EVM chains.",
 };
 
 export default function RootLayout({

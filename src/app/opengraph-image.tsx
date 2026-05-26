@@ -80,7 +80,7 @@ export default function OpenGraphImage() {
               color: "#9FC8FF",
             }}
           >
-            Existing EVM rails
+            Design-partner pilots
           </div>
           <div
             style={{
@@ -91,7 +91,7 @@ export default function OpenGraphImage() {
               letterSpacing: "-0.075em",
             }}
           >
-            Privacy for existing EVM rails.
+            Pilot private flows on existing EVM rails.
           </div>
           <div
             style={{
@@ -103,7 +103,7 @@ export default function OpenGraphImage() {
               color: "rgba(255,255,255,0.72)",
             }}
           >
-            Private account infrastructure for wallets, chains, stablecoin issuers, and neobanks.
+            Per-customer privacy pools for regulated EVM pilots with authorized compliance visibility.
           </div>
         </div>
       </div>

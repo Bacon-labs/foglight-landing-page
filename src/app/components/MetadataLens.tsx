@@ -23,17 +23,26 @@ const logRows: Row[] = [
   { ts: "00:01:47.301", field: "audit",        publicView: "—",                           operatorView: "records.exportable" },
 ];
 
+// Generated from /public/foglight-wordmark-blue.svg via
+// scripts/gen-terminal-mark.py — ascii-magic-style dot ramp (· ◦ • ●).
 const terminalMark = [
-  "        ░▒▓████▓▒░     ",
-  "    ████████████████   ",
-  "    ░░░░░░░██▀▀▀▀▀▀    ",
-  "    ░░░░░░░██          ",
-  "    ████████████████   ",
-  "    ░░░░░░░██▄▄▄▄▄▄    ",
-  "    ░░░░░░░██          ",
-  "        ░▒▓████▓▒░     ",
-  "                       ",
-  "        F O G L I G H T",
+  "         ·◦◦◦◦•◦••••••••◦•◦·          •●◦",
+  "      ·◦••••••••••••••••••••          ·••·",
+  "    ◦•••••••••••••••••••••••   ◦•••••••••••••••••·",
+  "  ·•••••••••••••••••••••••••·  ·◦◦◦◦◦◦••◦◦◦◦◦◦◦◦◦·",
+  " ·••••••••••••••••••••••••••·        •••",
+  "·•••••••••••••••••••••••••••◦        ••◦",
+  "••••••••••••••••••••••••••••◦        ·••◦",
+  "••••••••••••••••••••••••••••◦  ·◦◦◦◦◦◦•••◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦·",
+  "•••◦◦◦◦•••••••••••••••••••••◦  ◦••••••••••••••••••••••••••• ",
+  "•••    ·••••••••••••••••••••◦        ·••◦",
+  "◦••◦    ◦•••••••••••••••••••◦        •••·",
+  " •••◦    ·◦•••••••••••••••••◦        ••◦",
+  "  •••◦·     ·◦◦•••••••••••••·        ◦••·",
+  "   ◦•••◦·      ◦••••••••••••   ••••••••••••••••••·",
+  "    ·◦•••••◦◦··◦••••••••••••   ·······◦••◦◦◦◦◦◦···",
+  "       ·◦••••••••••••••••••◦          ◦••",
+  "           ················           ◦◦·",
 ];
 
 export default function MetadataLens() {
@@ -65,7 +74,8 @@ export default function MetadataLens() {
       <header className="hero-nav" aria-label="Foglight navigation">
         <Link className="brand-lockup" href="/" aria-label="Foglight home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/foglight-wordmark-white.svg" alt="Foglight" />
+          <img className="brand-symbol" src="/foglight-wordmark-blue.svg" alt="" />
+          <span className="brand-wordmark">Foglight</span>
         </Link>
       </header>
 

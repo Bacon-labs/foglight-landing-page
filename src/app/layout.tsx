@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { DM_Serif_Display, Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 const inter = localFont({
@@ -14,13 +15,28 @@ const inter = localFont({
   ],
 });
 
-const baskervville = localFont({
-  variable: "--font-baskervville",
+const dmSerifDisplay = DM_Serif_Display({
+  variable: "--font-dm-serif",
+  weight: "400",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
   display: "swap",
-  src: [
-    { path: "./fonts/Baskervville-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./fonts/Baskervville-Italic.ttf", weight: "400", style: "italic" },
-  ],
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = localFont({
@@ -73,7 +89,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${baskervville.variable} ${geistMono.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${dmSerifDisplay.variable} ${playfairDisplay.variable} ${dmSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
       <body className="min-h-full">{children}</body>
     </html>
   );

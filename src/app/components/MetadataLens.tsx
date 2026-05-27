@@ -156,7 +156,10 @@ export default function MetadataLens() {
         </div>
         <div className="hero-block-main">
           <h1 className="hero-title">
-            The privacy of a financial <em>account</em>,<br />on public chains.
+            <span className="hero-title-heavy">
+              The privacy of a financial <em>account</em>,
+            </span>
+            <span className="hero-title-soft">on public chains.</span>
           </h1>
           <div className="hero-block-side">
             <p className="hero-subhead">
@@ -172,6 +175,11 @@ export default function MetadataLens() {
                 <span className="sdk-badge">coming soon</span>
               </div>
             </div>
+            <nav className="hero-sublinks" aria-label="More about Foglight">
+              <Link href="/about">About us</Link>
+              <span className="hero-sublinks-sep" aria-hidden="true">·</span>
+              <Link href="/product">Product</Link>
+            </nav>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type PointerEvent } from "react";
+import { useRef, useState, type PointerEvent } from "react";
 
 const contactHref = "https://x.com/FoglightPrivacy";
 const sdkCommand = "npx @foglight/sdk init";
@@ -46,28 +46,55 @@ const terminalMark = [
 ];
 
 export default function MetadataLens() {
-  const [lensActive, setLensActive] = useState(false);
+  const [onScreen, setOnScreen] = useState(false);
+  const [inStage, setInStage] = useState(false);
+  const screenRef = useRef<HTMLDivElement>(null);
 
-  function updateLens(event: PointerEvent<HTMLElement>) {
+  function updateCursor(event: PointerEvent<HTMLElement>) {
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - bounds.left;
     const y = event.clientY - bounds.top;
 
     event.currentTarget.style.setProperty("--lens-x", `${x}px`);
     event.currentTarget.style.setProperty("--lens-y", `${y}px`);
-    if (!lensActive) setLensActive(true);
+
+    if (!inStage) setInStage(true);
+
+    const screen = screenRef.current;
+    if (!screen) {
+      if (onScreen) setOnScreen(false);
+      return;
+    }
+
+    const sb = screen.getBoundingClientRect();
+    const inside =
+      event.clientX >= sb.left &&
+      event.clientX <= sb.right &&
+      event.clientY >= sb.top &&
+      event.clientY <= sb.bottom;
+
+    if (inside !== onScreen) setOnScreen(inside);
   }
 
-  function hideLens() {
-    setLensActive(false);
+  function leaveStage() {
+    setInStage(false);
+    setOnScreen(false);
   }
+
+  const className = [
+    "lens-stage",
+    onScreen ? "lens-active" : "lens-idle",
+    inStage && !onScreen ? "cursor-key" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <section
-      className={`lens-stage ${lensActive ? "lens-active" : "lens-idle"}`}
-      onPointerMove={updateLens}
-      onPointerEnter={updateLens}
-      onPointerLeave={hideLens}
+      className={className}
+      onPointerMove={updateCursor}
+      onPointerEnter={updateCursor}
+      onPointerLeave={leaveStage}
     >
       <div className="ambient-noise" aria-hidden="true" />
 
@@ -79,7 +106,7 @@ export default function MetadataLens() {
         </Link>
       </header>
 
-      <div className="screen-frame" aria-hidden="true">
+      <div className="screen-frame" ref={screenRef} aria-hidden="true">
         <div className="screen-glow" />
         <div className="screen-surface" />
       </div>
@@ -147,6 +174,23 @@ export default function MetadataLens() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="key-cursor" aria-hidden="true">
+        <svg
+          viewBox="0 0 36 18"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="7" cy="9" r="5" />
+          <line x1="12" y1="9" x2="33" y2="9" />
+          <line x1="26" y1="9" x2="26" y2="14" />
+          <line x1="30" y1="9" x2="30" y2="12.5" />
+        </svg>
       </div>
     </section>
   );

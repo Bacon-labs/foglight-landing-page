@@ -42,7 +42,7 @@ a { color: inherit; text-decoration: none; }
 .lens-stage {
   --lens-x: 78vw;
   --lens-y: 30vh;
-  --lens-opacity: 0.78;
+  --lens-opacity: 0;
   --screen-h: clamp(20rem, 52svh, 36rem);
   position: relative;
   isolation: isolate;
@@ -199,8 +199,8 @@ a { color: inherit; text-decoration: none; }
  * ========================================================================= */
 
 .lens-stage {
-  --keyhole-w: 20rem;
-  --keyhole-h: 25.4rem;
+  --keyhole-w: 15.8rem;
+  --keyhole-h: 20.066rem;
   --keyhole-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 280' preserveAspectRatio='xMidYMid meet'><defs><filter id='f' x='-20%25' y='-20%25' width='140%25' height='140%25'><feGaussianBlur stdDeviation='9'/></filter></defs><g filter='url(%23f)' fill='white'><path d='M110 22 C 145 22 174 51 174 86 C 174 110 159 130 138 144 L 168 254 C 169 263 162 270 153 270 L 67 270 C 58 270 51 263 52 254 L 82 144 C 61 130 46 110 46 86 C 46 51 75 22 110 22 Z'/></g></svg>");
 }
 
@@ -218,6 +218,16 @@ a { color: inherit; text-decoration: none; }
           mask-size: var(--keyhole-w) var(--keyhole-h);
   -webkit-mask-position: calc(var(--lens-x) - (var(--keyhole-w) / 2)) calc(var(--lens-y) - (var(--keyhole-h) * 0.32));
           mask-position: calc(var(--lens-x) - (var(--keyhole-w) / 2)) calc(var(--lens-y) - (var(--keyhole-h) * 0.32));
+  /* Clip the keyhole reveal + halo to the screen panel rectangle so the
+   * lens silhouette can never overflow the white terminal. Values mirror
+   * .screen-frame inset/height/border-radius. */
+  clip-path: inset(
+    5.4rem
+    clamp(0.85rem, 3vw, 2.6rem)
+    calc(100% - 5.4rem - var(--screen-h))
+    clamp(0.85rem, 3vw, 2.6rem)
+    round clamp(1.1rem, 2vw, 1.65rem)
+  );
   transform: translateZ(0);
   transition: opacity 220ms ease;
 }
@@ -467,7 +477,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(2.6rem, 5.6vw, 5.6rem);
   font-weight: 400;
   letter-spacing: -0.025em;
-  line-height: 1.02;
+  line-height: 1;
   text-wrap: balance;
 }
 
@@ -576,6 +586,54 @@ a { color: inherit; text-decoration: none; }
 .hero-footer { display: none; }
 
 /* =========================================================================
+ * KEY CURSOR — shown while the pointer is on the dark stage (not on the screen).
+ * Uses mix-blend-mode: difference so the glyph reads white over the dark
+ * background and inverts to black when it floats over a light element
+ * (e.g. the white wordmark / brand mark in the header).
+ * ========================================================================= */
+
+.key-cursor {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 18px;
+  transform: translate3d(calc(var(--lens-x) - 6px), calc(var(--lens-y) - 9px), 0);
+  color: #ffffff;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 140ms ease;
+  mix-blend-mode: difference;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.45));
+}
+
+.lens-stage.cursor-key .key-cursor { opacity: 1; }
+
+/* When the pointer is over a link or button, yield to the native pointer
+ * cursor — don't stack the key glyph on top of the hand cursor. */
+.lens-stage a,
+.lens-stage button {
+  cursor: pointer;
+}
+
+.lens-stage:has(a:hover, button:hover) .key-cursor,
+.lens-stage:has(a:focus-visible, button:focus-visible) .key-cursor {
+  opacity: 0 !important;
+}
+
+.key-cursor svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* When the keyhole reveals the screen, hide the OS cursor; show neither key nor
+ * arrow. The keyhole IS the cursor in that zone. */
+.lens-stage.lens-active { cursor: none; }
+.lens-stage.lens-idle   { cursor: none; }
+
+/* =========================================================================
  * MOBILE
  * ========================================================================= */
 
@@ -586,8 +644,8 @@ a { color: inherit; text-decoration: none; }
     cursor: auto;
     --lens-x: 50%;
     --lens-y: 30%;
-    --keyhole-w: 11rem;
-    --keyhole-h: 14rem;
+    --keyhole-w: 8.69rem;
+    --keyhole-h: 11.06rem;
     --screen-h: 36svh;
   }
 
@@ -597,7 +655,16 @@ a { color: inherit; text-decoration: none; }
     height: var(--screen-h);
   }
 
-  .metadata-reveal { opacity: 0.92; }
+  .metadata-reveal {
+    clip-path: inset(
+      4.6rem
+      0.7rem
+      calc(100% - 4.6rem - var(--screen-h))
+      0.7rem
+      round clamp(1.1rem, 2vw, 1.65rem)
+    );
+    opacity: 0.92;
+  }
 
   .terminal-mark {
     left: 0.6rem;
@@ -651,7 +718,7 @@ a { color: inherit; text-decoration: none; }
   .hero-title {
     max-width: 100%;
     font-size: clamp(2.2rem, 9.6vw, 3rem);
-    line-height: 1.04;
+    line-height: 1;
   }
 
   .hero-subhead {

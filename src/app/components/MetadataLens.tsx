@@ -1,27 +1,39 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState, type PointerEvent } from "react";
 
 const contactHref = "https://x.com/FoglightPrivacy";
 const sdkCommand = "npx @foglight/sdk init";
 
-type Row = { ts: string; field: string; redacted: string; decoded: string };
+type Row = { ts: string; field: string; publicView: string; operatorView: string };
 
 const logRows: Row[] = [
-  { ts: "00:01:47.218", field: "tx", redacted: "0xa65f…c7fb", decoded: "0xa65f…c7fb" },
-  { ts: "00:01:47.218", field: "method", redacted: "0x70521ae9", decoded: "swap(wstETH→USDC)" },
-  { ts: "00:01:47.218", field: "pool.id", redacted: "0x3cff…9b19", decoded: "0x3cff…9b19" },
-  { ts: "00:01:47.218", field: "amount0", redacted: "████████████", decoded: "562.739469 wstETH" },
-  { ts: "00:01:47.218", field: "amount1", redacted: "████████████", decoded: "−118.006490 USDC" },
-  { ts: "00:01:47.218", field: "sender", redacted: "████████████", decoded: "0x278d…f8D2" },
-  { ts: "00:01:47.218", field: "recipient", redacted: "████████████", decoded: "cust:ACME-EU-00482" },
-  { ts: "00:01:47.218", field: "viewing_key", redacted: "—", decoded: "op.acme.eu  scope=tx" },
-  { ts: "00:01:47.218", field: "jurisdiction", redacted: "—", decoded: "EU-FR  tier=2" },
-  { ts: "00:01:47.218", field: "counterparty", redacted: "████████████", decoded: "0x51d7…91f2  kyc.verified" },
-  { ts: "00:01:47.301", field: "travel_rule", redacted: "—", decoded: "0x9f2b…ae04" },
-  { ts: "00:01:47.301", field: "audit", redacted: "—", decoded: "records.exportable" },
+  { ts: "00:01:47.218", field: "tx",           publicView: "0xa65f…c7fb",                 operatorView: "0xa65f…c7fb" },
+  { ts: "00:01:47.218", field: "method",       publicView: "0x70521ae9",                  operatorView: "swap(wstETH→USDC)" },
+  { ts: "00:01:47.218", field: "pool.id",      publicView: "0x3cff…9b19",                 operatorView: "0x3cff…9b19" },
+  { ts: "00:01:47.218", field: "amount0",      publicView: "0.045711629348 wstETH",       operatorView: "0.045711629348 wstETH" },
+  { ts: "00:01:47.218", field: "amount1",      publicView: "−201.024500 USDC",            operatorView: "−201.024500 USDC" },
+  { ts: "00:01:47.218", field: "sender",       publicView: "foglight.eth",                operatorView: "0x278d…f8D2" },
+  { ts: "00:01:47.218", field: "recipient",    publicView: "foglight.eth",                operatorView: "cust:ACME-EU-00482" },
+  { ts: "00:01:47.218", field: "viewing_key",  publicView: "—",                           operatorView: "op.acme.eu  scope=tx" },
+  { ts: "00:01:47.218", field: "jurisdiction", publicView: "—",                           operatorView: "EU-FR  tier=2" },
+  { ts: "00:01:47.218", field: "counterparty", publicView: "foglight.eth",                operatorView: "0x51d7…91f2  kyc.verified" },
+  { ts: "00:01:47.301", field: "travel_rule",  publicView: "—",                           operatorView: "0x9f2b…ae04" },
+  { ts: "00:01:47.301", field: "audit",        publicView: "—",                           operatorView: "records.exportable" },
+];
+
+const terminalMark = [
+  "        ░▒▓████▓▒░     ",
+  "    ████████████████   ",
+  "    ░░░░░░░██▀▀▀▀▀▀    ",
+  "    ░░░░░░░██          ",
+  "    ████████████████   ",
+  "    ░░░░░░░██▄▄▄▄▄▄    ",
+  "    ░░░░░░░██          ",
+  "        ░▒▓████▓▒░     ",
+  "                       ",
+  "        F O G L I G H T",
 ];
 
 export default function MetadataLens() {
@@ -52,8 +64,8 @@ export default function MetadataLens() {
 
       <header className="hero-nav" aria-label="Foglight navigation">
         <Link className="brand-lockup" href="/" aria-label="Foglight home">
-          <Image src="/logo-symbol-blue.png" alt="" width={34} height={34} priority />
-          <span>Foglight</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/foglight-wordmark-white.svg" alt="Foglight" />
         </Link>
       </header>
 
@@ -64,10 +76,17 @@ export default function MetadataLens() {
 
       <div className="metadata-reveal" aria-hidden="true">
         <div className="metadata-panel">
+          <div className="terminal-mark" aria-hidden="true">
+            {terminalMark.map((line, i) => (
+              <span key={`tm-${i}`}>{line}</span>
+            ))}
+          </div>
+
           <div className="metadata-topline">
             <span>foglight · viewing-key trace</span>
             <span>uniswap-v4 · pool 0x3cff…9b19</span>
           </div>
+
           <div className="log-table">
             <div className="log-header">
               <span className="col-ts">time</span>
@@ -81,9 +100,9 @@ export default function MetadataLens() {
                 <div className="log-row" key={`r-${i}`}>
                   <span className="col-ts">{row.ts}</span>
                   <span className="col-field">{row.field}</span>
-                  <span className="col-public">{row.redacted}</span>
+                  <span className="col-public">{row.publicView}</span>
                   <span className="col-arrow" aria-hidden="true">→</span>
-                  <span className="col-operator">{row.decoded}</span>
+                  <span className="col-operator">{row.operatorView}</span>
                 </div>
               ))}
             </div>
@@ -108,7 +127,7 @@ export default function MetadataLens() {
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href={contactHref} target="_blank" rel="noreferrer">
-                Talk to Foglight
+                Talk to us
               </a>
               <div className="sdk-install" role="group" aria-label="Foglight SDK install (coming soon)">
                 <span className="sdk-prompt">$</span>
@@ -118,12 +137,6 @@ export default function MetadataLens() {
             </div>
           </div>
         </div>
-        <div className="hero-block-rule" aria-hidden="true" />
-        <footer className="hero-footer">
-          <a href={contactHref} target="_blank" rel="noreferrer">@FoglightPrivacy</a>
-          <span>Per-customer privacy pools.</span>
-          <span>Operator-held viewing keys.</span>
-        </footer>
       </div>
     </section>
   );

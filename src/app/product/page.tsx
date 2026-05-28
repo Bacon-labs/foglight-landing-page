@@ -163,7 +163,7 @@ export default function ProductPage() {
         </a>
       }
       heroImage={{
-        src: "/images/product-hero.png",
+        src: "/images/product-hero.webp",
         alt: "",
       }}
       lede={

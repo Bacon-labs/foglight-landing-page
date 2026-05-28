@@ -1,20 +1,12 @@
-"use client";
-
-import { useSpotlight } from "./useSpotlight";
-
 type AmlrYearCardProps = {
   obligations: string[];
 };
 
 export default function AmlrYearCard({ obligations }: AmlrYearCardProps) {
-  const { ref, onPointerMove } = useSpotlight<HTMLElement>();
-
   return (
     <article
-      ref={ref}
       className="amlr-card"
       data-spotlight=""
-      onPointerMove={onPointerMove}
     >
       <span className="spotlight-glow" aria-hidden="true" />
       <span className="spotlight-pattern" aria-hidden="true" />

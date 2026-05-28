@@ -47,7 +47,7 @@ export default function AboutPage() {
         </>
       }
       heroImage={{
-        src: "/images/about-hero.png",
+        src: "/images/about-hero.webp",
         alt: "",
       }}
       lede={

@@ -1,6 +1,4 @@
-"use client";
-
-import { useSpotlight } from "./useSpotlight";
+import Image from "next/image";
 
 type HeroImageProps = {
   src: string;
@@ -8,18 +6,20 @@ type HeroImageProps = {
 };
 
 export default function HeroImage({ src, alt }: HeroImageProps) {
-  const { ref, onPointerMove } = useSpotlight<HTMLElement>();
-
   return (
     <figure
-      ref={ref}
       className="subpage-hero-image"
       data-spotlight=""
-      onPointerMove={onPointerMove}
       aria-hidden={alt ? undefined : true}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        fetchPriority="high"
+        loading="eager"
+        sizes="(max-width: 960px) calc(100vw - 2rem), 896px"
+      />
       <span className="spotlight-glow" aria-hidden="true" />
       <span className="spotlight-pattern" aria-hidden="true" />
     </figure>

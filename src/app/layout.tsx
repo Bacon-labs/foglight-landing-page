@@ -55,13 +55,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://foglight.xyz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Foglight - The privacy of a financial account, on public chains",
+  title: "Foglight — Per-customer privacy pools on existing EVM chains",
   description:
-    "Privacy infrastructure for regulated operators, with customer-specific privacy pools on existing EVM chains.",
+    "KYC-gated privacy pools for EVM operators, with operator-held viewing keys and encrypted on-chain traces for compliance workflows.",
   openGraph: {
-    title: "Foglight - The privacy of a financial account, on public chains",
+    title: "Foglight — Per-customer privacy pools on existing EVM chains",
     description:
-      "Your users get bank-account privacy. Your compliance team keeps the keys. Runs on the EVM chains you already support.",
+      "Wallets, neobanks, custodians, and treasuries run siloed pools with operator-held viewing keys, Travel Rule workflows, and authorized reveal.",
     url: siteUrl,
     siteName: "Foglight",
     type: "website",
@@ -70,15 +70,15 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Foglight - The privacy of a financial account, on public chains",
+        alt: "Foglight — Per-customer privacy pools on existing EVM chains",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foglight - The privacy of a financial account, on public chains",
+    title: "Foglight — Per-customer privacy pools on existing EVM chains",
     description:
-      "Privacy infrastructure for regulated operators, with customer-specific privacy pools on existing EVM chains.",
+      "KYC-gated privacy pools for EVM operators, with operator-held viewing keys and encrypted on-chain traces for compliance workflows.",
     images: ["/opengraph-image"],
   },
 };

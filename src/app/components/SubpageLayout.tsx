@@ -1,58 +1,64 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+import HeroImage from "./HeroImage";
+import SiteFooter from "./SiteFooter";
+import SiteHeader from "./SiteHeader";
+
+type HeroImage = {
+  src: string;
+  alt: string;
+};
 
 type SubpageLayoutProps = {
   eyebrow: string;
   title: ReactNode;
   lede?: ReactNode;
+  headerAction?: ReactNode;
+  heroImage?: HeroImage;
   children: ReactNode;
+  variant?: "default" | "patterned";
 };
 
-const contactHref = "https://x.com/FoglightPrivacy";
+export default function SubpageLayout({
+  eyebrow,
+  title,
+  lede,
+  headerAction,
+  heroImage,
+  children,
+  variant = "default",
+}: SubpageLayoutProps) {
+  const mainClass = [
+    "subpage",
+    "subpage-reveal",
+    variant === "patterned" ? "subpage-patterned" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-export default function SubpageLayout({ eyebrow, title, lede, children }: SubpageLayoutProps) {
   return (
-    <main className="subpage">
-      <header className="subpage-nav" aria-label="Foglight navigation">
-        <Link className="brand-lockup" href="/" aria-label="Foglight home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="brand-symbol" src="/foglight-wordmark-blue.svg" alt="" />
-          <span className="brand-wordmark">Foglight</span>
-        </Link>
-        <nav className="subpage-nav-links" aria-label="Subpages">
-          <Link href="/about">About</Link>
-          <span aria-hidden="true">·</span>
-          <Link href="/product">Product</Link>
-          <span aria-hidden="true">·</span>
-          <a href={contactHref} target="_blank" rel="noreferrer">
-            Talk to us
-          </a>
-        </nav>
-      </header>
+    <div className="page-shell">
+      <main className={mainClass}>
+        {variant === "patterned" ? (
+          <div className="subpage-pattern" aria-hidden="true" />
+        ) : null}
 
-      <article className="subpage-article">
-        <p className="subpage-eyebrow">
-          <span className="subpage-eyebrow-line" aria-hidden="true" />
-          {eyebrow}
-        </p>
-        <h1 className="subpage-title">{title}</h1>
-        {lede ? <p className="subpage-lede">{lede}</p> : null}
-        <div className="subpage-body">{children}</div>
+        <SiteHeader />
 
-        <div className="subpage-footer">
-          <Link href="/" className="subpage-back" aria-label="Back to home">
-            ← Back to home
-          </Link>
-          <a
-            className="subpage-cta"
-            href={contactHref}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Talk to us
-          </a>
-        </div>
-      </article>
-    </main>
+        <article className="subpage-article">
+          <p className="subpage-eyebrow">
+            <span className="subpage-eyebrow-line" aria-hidden="true" />
+            {eyebrow}
+          </p>
+          <div className="subpage-title-row">
+            <h1 className="subpage-title">{title}</h1>
+            {headerAction ? <div className="subpage-title-action">{headerAction}</div> : null}
+          </div>
+          {lede ? <p className="subpage-lede">{lede}</p> : null}
+          {heroImage ? <HeroImage src={heroImage.src} alt={heroImage.alt} /> : null}
+          <div className="subpage-body">{children}</div>
+        </article>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }

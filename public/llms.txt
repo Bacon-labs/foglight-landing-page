@@ -1,0 +1,67 @@
+# Foglight
+
+> Foglight builds compliant privacy infrastructure for existing EVM chains. Wallets, stablecoin issuers, neobanks, exchanges, and chains run per-customer privacy pools with operator-held viewing keys — privacy that meets users where they already are, without giving up AML, Travel Rule, or KYC obligations.
+
+## Project pages
+
+- [Home](https://foglight.xyz/): Per-customer privacy pools, compliant by design.
+- [Product](https://foglight.xyz/product): How it works — primitives, coverage, the Compliance Suite, AMLR 2027 readiness, who it's for, and what Foglight is not.
+- [About](https://foglight.xyz/about): Team, thesis, and what Foglight is building.
+
+## What Foglight is
+
+Foglight is privacy infrastructure for regulated EVM operators. It gives institutions the same privacy posture as a bank — hidden from the public chain, visible to the institution's authorized compliance, risk, and support teams. Each institutional customer operates its own dedicated privacy pool, with policy settings tailored to its jurisdiction and risk model. No shared anonymity set. No new L1. No relayers.
+
+## How it works
+
+- **Per-customer pools** — Each institutional customer gets its own privacy pool, no cross-customer contamination.
+- **Customer-held viewing keys** — The customer holds the viewing key directly. Authorized disclosure produces transaction history, balances, and source-of-funds reports; every access is logged for audit.
+- **Encrypted on-chain traces** — Every private transaction publishes an encrypted trace. Suspicious activity traces back to the institution's original KYC record without revealing other users' data.
+- **No relayers** — Foglight uses existing ERC-4337 bundlers and paymasters instead of operator-run relayers. Less legal liability, lower operating cost, gas abstraction out of the box.
+- **Built for security from day one** — Noir circuits with UltraHonk/Barretenberg, no trusted setup. Lean/Verity for critical formal verification. Sub-second client-side proving on smartphones.
+
+## Coverage
+
+Customers can transact privately on their preferred EVM chain through the wallets and apps they already use:
+
+- **Private transfers** — Send tokens and stablecoins to KYC'd counterparties without leaking balances, routes, or counterparty relationships to the public chain.
+- **Private swaps** — Swap multi-asset positions inside institutional pools without exposing trades to MEV or the rest of the chain.
+- **Private lending** — Borrow, lend, and rebalance while keeping collateral, exposure, and counterparty terms private.
+- **Other EVM apps** — Interact with the rest of the EVM landscape without writing your wallet history into a permanent public ledger.
+
+## Compliance Suite
+
+Foglight does not replace your compliance stack — it plugs into it.
+
+- **Policy & Compliance Integrations** — Plug into the customer's existing KYC/KYB, sanctions screening, Travel Rule, and policy engines before users enter private accounts.
+- **Private Account SDK** — Smart contracts, SDK, and APIs for wallets, chains, issuers, and neobanks to add private balances and transactions on existing EVM apps.
+- **Disclosure & Audit Workflows** — Authorized transaction history, balances, source-of-funds reports, and audit logs for compliance, risk, support, and legal requests.
+
+## Regulation — AMLR 2027
+
+The EU's Anti-Money Laundering Regulation comes into effect in 2027. It requires regulated crypto businesses to support KYB/KYC at onboarding, transaction history on demand, Travel Rule compliance, and active monitoring of suspicious activity. Most privacy systems are not designed for these institutional obligations. Foglight is built around them from day one.
+
+## Who Foglight is for
+
+- **Wallets** — Add private balances and activity inside the flows users already know, without bridging to a new chain or app.
+- **Stablecoin and e-money issuers** — Offer private balances on existing rails while keeping the issuer's compliance, monitoring, and disclosure obligations intact.
+- **Exchanges** — Give users private settlement and transfers with audit-ready disclosure for risk, support, and regulator requests.
+- **Neobanks and payments** — Match the privacy posture of a bank account — visible to the institution's authorized teams, hidden from the public chain.
+- **Chains** — Plug Foglight into any EVM without launching a new L1, a new relayer network, or a separate privacy app for users.
+
+## What Foglight is not
+
+- Not a mixer and not a shared anonymity set that blinds the institution.
+- Not FHE and not a custom computation layer.
+- Not a new L1, bridge, or custodial relayer network.
+- Not a claim that Foglight guarantees AML, Travel Rule, or SAR compliance by itself.
+
+## Team
+
+Foglight has been building together since 2017. Co-founders: McFly (@0x_mcfly), Zefram Lou (@boredGenius), Szeth Vallano (@0xszeth).
+
+## Contact
+
+- X / Twitter: https://x.com/FoglightPrivacy
+- Email: hi@foglight.xyz
+- Status: Foglight is in private alpha. Talk to us to get onboarded.

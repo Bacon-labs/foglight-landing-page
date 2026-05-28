@@ -1042,21 +1042,22 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   isolation: isolate;
   width: 100%;
-  aspect-ratio: 16 / 7;
   overflow: hidden;
   border-radius: clamp(0.6rem, 1vw, 1rem);
   background: #050604;
   border: 1px solid rgba(238, 247, 255, 0.08);
 }
 
-.subpage-hero-image img {
-  position: absolute;
-  inset: 0;
+.subpage-hero-fx {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
+}
+
+.subpage-hero-fx-target {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border-radius: clamp(0.6rem, 1vw, 1rem);
+  background: #050604;
 }
 
 .subpage-hero-image .spotlight-glow,

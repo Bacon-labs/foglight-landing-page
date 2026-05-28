@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      img-fx:
+        specifier: ^0.3.1
+        version: 0.3.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(three@0.184.0)
       next:
         specifier: 16.2.6
         version: 16.2.6(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -17,6 +20,9 @@ importers:
       react-dom:
         specifier: 19.2.4
         version: 19.2.4(react@19.2.4)
+      three:
+        specifier: ^0.184.0
+        version: 0.184.0
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4
@@ -1224,6 +1230,13 @@ packages:
     resolution: {integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==}
     engines: {node: '>= 4'}
 
+  img-fx@0.3.1:
+    resolution: {integrity: sha512-7reYL4uVZMFbV2vx26++3A12zIdum9SN4Srjg1+vDb4JqKzCPoFOqHxnqaLmsWwZ/dgxZW1XxNaJ6W7POthvzQ==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+      three: '>=0.149.0'
+
   import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
     engines: {node: '>=6'}
@@ -1832,6 +1845,9 @@ packages:
   tapable@2.3.3:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
+
+  three@0.184.0:
+    resolution: {integrity: sha512-wtTRjG92pM5eUg/KuUnHsqSAlPM296brTOcLgMRqEeylYTh/CdtvKUvCyyCQTzFuStieWxvZb8mVTMvdPyUpxg==}
 
   tinyglobby@0.2.16:
     resolution: {integrity: sha512-pn99VhoACYR8nFHhxqix+uvsbXineAasWm5ojXoN8xEwK5Kd3/TrhNn1wByuD52UxWRLy8pu+kRMniEi6Eq9Zg==}
@@ -3243,6 +3259,12 @@ snapshots:
 
   ignore@7.0.5: {}
 
+  img-fx@0.3.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(three@0.184.0):
+    dependencies:
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+      three: 0.184.0
+
   import-fresh@3.3.1:
     dependencies:
       parent-module: 1.0.1
@@ -3901,6 +3923,8 @@ snapshots:
   tailwindcss@4.3.0: {}
 
   tapable@2.3.3: {}
+
+  three@0.184.0: {}
 
   tinyglobby@0.2.16:
     dependencies:

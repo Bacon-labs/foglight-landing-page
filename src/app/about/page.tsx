@@ -1,95 +1,111 @@
 import type { Metadata } from "next";
+import AskLlms from "../components/AskLlms";
 import SubpageLayout from "../components/SubpageLayout";
+import TeamCard from "../components/TeamCard";
 
 export const metadata: Metadata = {
   title: "About Foglight",
   description:
-    "Foglight builds compliant privacy infrastructure for the financial institutions, custodians, and regulated operators using public EVM chains.",
+    "Foglight builds compliant privacy infrastructure for existing EVM chains, wallets, stablecoin issuers, and neobanks.",
 };
+
+const contactHref = "https://x.com/FoglightPrivacy";
+
+type TeamMember = {
+  name: string;
+  handle: string;
+  image: string;
+};
+
+const team: TeamMember[] = [
+  {
+    name: "McFly",
+    handle: "0x_mcfly",
+    image: "/team/0x_mcfly.jpg",
+  },
+  {
+    name: "Zefram Lou",
+    handle: "boredGenius",
+    image: "/team/boredGenius.jpg",
+  },
+  {
+    name: "Szeth Vallano",
+    handle: "0xszeth",
+    image: "/team/0xszeth.jpg",
+  },
+];
 
 export default function AboutPage() {
   return (
     <SubpageLayout
+      variant="patterned"
       eyebrow="About"
       title={
         <>
-          <span className="hero-title-heavy">
-            We build the privacy <em>banks</em> already have,
-          </span>
-          <span className="hero-title-soft">on public chains.</span>
+          <span className="hero-title-heavy">Building privacy rails</span>
+          <span className="hero-title-soft">for existing EVM chains.</span>
         </>
       }
+      heroImage={{
+        src: "/images/about-hero.png",
+        alt: "",
+      }}
       lede={
         <>
-          Foglight is an infrastructure company for regulated operators moving value on public EVM
-          chains. We give them the privacy their customers expect from a bank account, without
-          giving up the auditability their compliance teams are obligated to keep.
+          Public blockchains expose assets, transactions, and counterparties by default. Foglight
+          gives wallets, stablecoin issuers, neobanks, and chains a way to offer privacy without
+          giving up compliance control.
         </>
       }
     >
       <section>
-        <h2>What we&apos;re solving</h2>
-        <p>
-          Public blockchains are a settlement layer with one inconvenient property for any serious
-          financial operator: every counterparty, every balance, every transfer is permanently
-          legible to the entire internet. That&apos;s a non-starter for payroll, treasury, brokerage
-          flows, custody, settlement, and most institutional payments.
-        </p>
-        <p>
-          Existing mixers solve confidentiality by destroying the audit trail. Regulated operators
-          can&apos;t use that. They need a system where the public chain stops leaking customer
-          metadata, but the operator and their auditors can still see exactly who did what.
-        </p>
-        <p>
-          Foglight is that system.
+        <blockquote className="about-quote">
+          Privacy is a normal expectation of finance. Foglight makes it available to regulated
+          crypto businesses without forcing them to choose between user privacy and AML obligations.
+        </blockquote>
+      </section>
+
+      <section className="about-thesis">
+        <p className="section-label">Thesis</p>
+        <h2 className="section-heading">
+          Same posture as a bank — <em>hidden from the public, visible to the institution.</em>
+        </h2>
+        <p className="section-prose">
+          Each customer operates its own per-customer privacy pool. User data is hidden from the
+          public chain but visible to the institution&apos;s authorized compliance, risk, and support
+          teams. No shared anonymity set. No new L1. No relayers.
         </p>
       </section>
 
-      <section>
-        <h2>How it works in one paragraph</h2>
-        <p>
-          Each customer gets a per-customer privacy pool: a smart-contract shielded set on the
-          same EVM chain the operator is already using. Transactions inside that pool are opaque to
-          the public chain. The operator holds the viewing keys for their own pool. Their
-          compliance team, their auditor, and their counterparties (when authorized) can decode
-          exactly the same logs you saw redacted from the outside. No FHE, no custom L1, no exotic
-          cryptography assumptions — just selective disclosure built on standard EVM primitives.
-        </p>
+      <section className="about-team">
+        <p className="section-label">Team</p>
+        <h2 className="section-heading">Building together since 2017.</h2>
+        <div className="team-grid">
+          {team.map((member) => (
+            <TeamCard
+              key={member.name}
+              name={member.name}
+              handle={member.handle}
+              image={member.image}
+            />
+          ))}
+        </div>
       </section>
 
       <section>
-        <h2>Who we&apos;re for</h2>
-        <ul>
-          <li>Regulated stablecoin issuers, fintechs, and PSPs operating onchain.</li>
-          <li>Custodians and brokerages that already settle in tokenized assets.</li>
-          <li>Treasury teams paying counterparties, payroll, or vendors onchain.</li>
-          <li>Exchanges and prime brokers that need clean separation between customer flows.</li>
-          <li>Compliance teams that need real records, not zero-knowledge handwaving.</li>
-        </ul>
+        <div className="status-pill" role="status">
+          <span className="status-dot" aria-hidden="true" />
+          <span className="status-text">
+            Foglight is in private alpha. Talk to us to get onboarded.
+          </span>
+          <a className="status-link" href={contactHref} target="_blank" rel="noreferrer">
+            @FoglightPrivacy ↗
+          </a>
+        </div>
       </section>
 
       <section>
-        <h2>What we believe</h2>
-        <p>
-          Privacy and compliance aren&apos;t opposites. They&apos;re the same product, looked at
-          from two sides. The customer should see what a customer sees in a bank app. The
-          regulator should see what a regulator sees in a bank&apos;s books. The public chain is
-          neither of those audiences and should never have been treated like one.
-        </p>
-        <p>
-          We&apos;d rather ship something narrow, real, and pilotable than a maximalist privacy
-          story that no compliance officer can sign off on.
-        </p>
-      </section>
-
-      <section>
-        <h2>Where we are</h2>
-        <p>
-          Foglight is early-stage and live in pilot. The SDK installs on existing EVM chains. We
-          work directly with the first cohort of operators integrating it. If you&apos;re building
-          something that touches real money on public chains and you&apos;ve hit the metadata
-          problem, that&apos;s the conversation we want.
-        </p>
+        <AskLlms />
       </section>
     </SubpageLayout>
   );

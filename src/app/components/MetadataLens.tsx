@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useRef, useState, type PointerEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
+import SiteHeader from "./SiteHeader";
 
 const contactHref = "https://x.com/FoglightPrivacy";
-const sdkCommand = "npx @foglight/sdk init";
+const sdkCommand = "npm install @foglight/sdk";
 
 type Row = { ts: string; field: string; publicView: string; operatorView: string };
 
@@ -17,7 +17,7 @@ const logRows: Row[] = [
   { ts: "00:01:47.218", field: "sender",       publicView: "foglight.eth",                operatorView: "0x278d…f8D2" },
   { ts: "00:01:47.218", field: "recipient",    publicView: "foglight.eth",                operatorView: "cust:ACME-EU-00482" },
   { ts: "00:01:47.218", field: "viewing_key",  publicView: "—",                           operatorView: "op.acme.eu  scope=tx" },
-  { ts: "00:01:47.218", field: "jurisdiction", publicView: "—",                           operatorView: "EU-FR  tier=2" },
+  { ts: "00:01:47.218", field: "jurisdiction", publicView: "—",                           operatorView: "EU-IT  tier=2" },
   { ts: "00:01:47.218", field: "counterparty", publicView: "foglight.eth",                operatorView: "0x51d7…91f2  kyc.verified" },
   { ts: "00:01:47.301", field: "travel_rule",  publicView: "—",                           operatorView: "0x9f2b…ae04" },
   { ts: "00:01:47.301", field: "audit",        publicView: "—",                           operatorView: "records.exportable" },
@@ -48,38 +48,70 @@ const terminalMark = [
 export default function MetadataLens() {
   const [onScreen, setOnScreen] = useState(false);
   const [inStage, setInStage] = useState(false);
+  const stageRef = useRef<HTMLElement | null>(null);
   const screenRef = useRef<HTMLDivElement>(null);
+  /* Stage rect is cached — the lens-stage section is static. The
+   * screen-frame rect is NOT cached because it animates via a scaleY
+   * transform (CRT power-on), which doesn't fire ResizeObserver. */
+  const stageRectRef = useRef<DOMRect | null>(null);
 
-  function updateCursor(event: PointerEvent<HTMLElement>) {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = event.clientX - bounds.left;
-    const y = event.clientY - bounds.top;
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
 
-    event.currentTarget.style.setProperty("--lens-x", `${x}px`);
-    event.currentTarget.style.setProperty("--lens-y", `${y}px`);
+    const refresh = () => {
+      stageRectRef.current = stage.getBoundingClientRect();
+    };
+    const invalidate = () => {
+      stageRectRef.current = null;
+    };
 
-    if (!inStage) setInStage(true);
+    refresh();
+    const observer = new ResizeObserver(refresh);
+    observer.observe(stage);
+    window.addEventListener("scroll", invalidate, { passive: true, capture: true });
+    window.addEventListener("resize", refresh, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", invalidate, { capture: true });
+      window.removeEventListener("resize", refresh);
+    };
+  }, []);
+
+  const updateCursor = useCallback((event: PointerEvent<HTMLElement>) => {
+    const target = event.currentTarget;
+    let stageRect = stageRectRef.current;
+    if (!stageRect) {
+      stageRect = target.getBoundingClientRect();
+      stageRectRef.current = stageRect;
+    }
+
+    target.style.setProperty("--lens-x", `${event.clientX - stageRect.left}px`);
+    target.style.setProperty("--lens-y", `${event.clientY - stageRect.top}px`);
+
+    setInStage((prev) => (prev ? prev : true));
 
     const screen = screenRef.current;
     if (!screen) {
-      if (onScreen) setOnScreen(false);
+      setOnScreen((prev) => (prev ? false : prev));
       return;
     }
 
-    const sb = screen.getBoundingClientRect();
+    const screenRect = screen.getBoundingClientRect();
     const inside =
-      event.clientX >= sb.left &&
-      event.clientX <= sb.right &&
-      event.clientY >= sb.top &&
-      event.clientY <= sb.bottom;
+      event.clientX >= screenRect.left &&
+      event.clientX <= screenRect.right &&
+      event.clientY >= screenRect.top &&
+      event.clientY <= screenRect.bottom;
 
-    if (inside !== onScreen) setOnScreen(inside);
-  }
+    setOnScreen((prev) => (prev === inside ? prev : inside));
+  }, []);
 
-  function leaveStage() {
+  const leaveStage = useCallback(() => {
     setInStage(false);
     setOnScreen(false);
-  }
+  }, []);
 
   const className = [
     "lens-stage",
@@ -91,6 +123,7 @@ export default function MetadataLens() {
 
   return (
     <section
+      ref={stageRef}
       className={className}
       onPointerMove={updateCursor}
       onPointerEnter={updateCursor}
@@ -98,13 +131,7 @@ export default function MetadataLens() {
     >
       <div className="ambient-noise" aria-hidden="true" />
 
-      <header className="hero-nav" aria-label="Foglight navigation">
-        <Link className="brand-lockup" href="/" aria-label="Foglight home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="brand-symbol" src="/foglight-wordmark-blue.svg" alt="" />
-          <span className="brand-wordmark">Foglight</span>
-        </Link>
-      </header>
+      <SiteHeader variant="dark" />
 
       <div className="screen-frame" ref={screenRef} aria-hidden="true">
         <div className="screen-glow" />
@@ -130,7 +157,7 @@ export default function MetadataLens() {
               <span className="col-field">field</span>
               <span className="col-public">public chain view</span>
               <span className="col-arrow" aria-hidden="true">→</span>
-              <span className="col-operator">operator view · viewing key</span>
+              <span className="col-operator">operator view & keys</span>
             </div>
             <div className="log-body">
               {logRows.map((row, i) => (
@@ -146,24 +173,25 @@ export default function MetadataLens() {
           </div>
         </div>
       </div>
-
       <div className="hero-block">
         <div className="hero-block-top">
           <p className="hero-kicker">
             <span className="hero-kicker-line" aria-hidden="true" />
-            Compliant privacy infrastructure for existing EVM chains
+            Privacy infrastructure for regulated EVM operators
           </p>
         </div>
         <div className="hero-block-main">
-          <h1 className="hero-title">
-            <span className="hero-title-heavy">
-              The privacy of a financial <em>account</em>,
-            </span>
-            <span className="hero-title-soft">on public chains.</span>
-          </h1>
+          <div className="hero-heading">
+            <h1 className="hero-title">
+              <span className="hero-title-heavy">Per-customer privacy pools</span>
+              <span className="hero-title-soft">Compliant by design.</span>
+            </h1>
+          </div>
           <div className="hero-block-side">
             <p className="hero-subhead">
-              Your users get the privacy they&apos;d expect from a bank account. Your compliance team keeps the keys. Runs on the EVM chains you already support.
+              Wallets, issuers, and neobanks run siloed pools with operator-held viewing keys.
+              Each transaction publishes an encrypted on-chain trace for monitoring, Travel Rule,
+              and authorized reveal — without mixers, FHE, relayers, or a new L1.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href={contactHref} target="_blank" rel="noreferrer">
@@ -175,11 +203,6 @@ export default function MetadataLens() {
                 <span className="sdk-badge">coming soon</span>
               </div>
             </div>
-            <nav className="hero-sublinks" aria-label="More about Foglight">
-              <Link href="/about">About us</Link>
-              <span className="hero-sublinks-sep" aria-hidden="true">·</span>
-              <Link href="/product">Product</Link>
-            </nav>
           </div>
         </div>
       </div>

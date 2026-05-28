@@ -83,8 +83,8 @@ export default async function OpenGraphImage() {
               textTransform: "uppercase",
             }}
           >
-            <span>Compliant Privacy Infrastructure</span>
-            <span>EVM Rails</span>
+            <span>KYC-Gated Privacy Pools</span>
+            <span>Existing EVM Chains</span>
           </div>
           <div
             style={{
@@ -99,7 +99,7 @@ export default async function OpenGraphImage() {
               textShadow: "0 0 18px rgba(255,255,255,0.28)",
             }}
           >
-            The privacy of a financial account, on public chains.
+            Per-customer privacy pools on existing EVM chains.
           </div>
           <div
             style={{
@@ -113,7 +113,7 @@ export default async function OpenGraphImage() {
               letterSpacing: -0.4,
             }}
           >
-            Per-customer privacy pools. Operator-held viewing keys. Existing EVM chains.
+            Operator-held viewing keys. Encrypted traces. Compliance workflows.
           </div>
           <div
             style={{

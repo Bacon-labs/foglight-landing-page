@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
+import FooterRevealGate from "./FooterRevealGate";
 import HeroImage from "./HeroImage";
 import SiteFooter from "./SiteFooter";
 import SiteHeader from "./SiteHeader";
+import SpotlightRoot from "./SpotlightRoot";
 
 type HeroImage = {
   src: string;
@@ -44,7 +46,7 @@ export default function SubpageLayout({
 
         <SiteHeader />
 
-        <article className="subpage-article">
+        <SpotlightRoot className="subpage-article">
           <p className="subpage-eyebrow">
             <span className="subpage-eyebrow-line" aria-hidden="true" />
             {eyebrow}
@@ -56,9 +58,11 @@ export default function SubpageLayout({
           {lede ? <p className="subpage-lede">{lede}</p> : null}
           {heroImage ? <HeroImage src={heroImage.src} alt={heroImage.alt} /> : null}
           <div className="subpage-body">{children}</div>
-        </article>
+        </SpotlightRoot>
       </main>
-      <SiteFooter />
+      <FooterRevealGate>
+        <SiteFooter />
+      </FooterRevealGate>
     </div>
   );
 }

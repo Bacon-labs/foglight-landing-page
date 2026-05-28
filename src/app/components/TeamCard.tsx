@@ -1,6 +1,4 @@
-"use client";
-
-import { useSpotlight } from "./useSpotlight";
+import Image from "next/image";
 
 type TeamCardProps = {
   name: string;
@@ -9,24 +7,24 @@ type TeamCardProps = {
 };
 
 export default function TeamCard({ name, handle, image }: TeamCardProps) {
-  const { ref, onPointerMove } = useSpotlight<HTMLAnchorElement>();
-
   return (
     <a
-      ref={ref}
       className="team-card team-card-link"
       data-spotlight=""
       href={`https://x.com/${handle}`}
       target="_blank"
       rel="noreferrer"
       aria-label={`${name} on X`}
-      onPointerMove={onPointerMove}
     >
       <span className="spotlight-glow" aria-hidden="true" />
       <span className="spotlight-pattern" aria-hidden="true" />
       <span className="team-card-portrait" aria-hidden="true">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt="" />
+        <Image
+          src={image}
+          alt=""
+          fill
+          sizes="(max-width: 640px) calc(100vw - 4.8rem), (max-width: 900px) 30vw, 17rem"
+        />
       </span>
       <h3 className="team-card-name">{name}</h3>
       <span className="team-card-handle">

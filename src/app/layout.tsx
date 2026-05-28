@@ -3,18 +3,6 @@ import localFont from "next/font/local";
 import { DM_Serif_Display, Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = localFont({
-  variable: "--font-inter",
-  display: "swap",
-  src: [
-    { path: "./fonts/Inter-400.ttf", weight: "400", style: "normal" },
-    { path: "./fonts/Inter-500.ttf", weight: "500", style: "normal" },
-    { path: "./fonts/Inter-600.ttf", weight: "600", style: "normal" },
-    { path: "./fonts/Inter-700.ttf", weight: "700", style: "normal" },
-    { path: "./fonts/Inter-800.ttf", weight: "800", style: "normal" },
-  ],
-});
-
 const dmSerifDisplay = DM_Serif_Display({
   variable: "--font-dm-serif",
   weight: "400",
@@ -34,7 +22,7 @@ const playfairDisplay = Playfair_Display({
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  style: "normal",
   subsets: ["latin"],
   display: "swap",
 });
@@ -91,7 +79,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${dmSerifDisplay.variable} ${playfairDisplay.variable} ${dmSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${dmSerifDisplay.variable} ${playfairDisplay.variable} ${dmSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>

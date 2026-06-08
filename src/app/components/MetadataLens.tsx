@@ -2,9 +2,15 @@
 
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 import SiteHeader from "./SiteHeader";
+import NotifyForm from "./NotifyForm";
 
 const contactHref = "https://x.com/FoglightPrivacy";
-const sdkCommand = "npm install @foglight/sdk";
+
+const heroPoints = [
+  "Onchain privacy that's user-friendly and legally compliant",
+  "Plug-and-play with existing apps & EVM networks",
+  "Lightning fast, zero fees",
+];
 
 type Row = { ts: string; field: string; publicView: string; operatorView: string };
 
@@ -188,20 +194,16 @@ export default function MetadataLens() {
             </h1>
           </div>
           <div className="hero-block-side">
-            <p className="hero-subhead">
-              Wallets, issuers, and neobanks run siloed pools with operator-held viewing keys.
-              Each transaction publishes an encrypted on-chain trace for monitoring, Travel Rule,
-              and authorized reveal — without mixers, FHE, relayers, or a new L1.
-            </p>
+            <ul className="hero-points">
+              {heroPoints.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
             <div className="hero-actions">
               <a className="button button-primary" href={contactHref} target="_blank" rel="noreferrer">
                 Talk to us
               </a>
-              <div className="sdk-install" role="group" aria-label="Foglight SDK install (coming soon)">
-                <span className="sdk-prompt">$</span>
-                <code className="sdk-cmd">{sdkCommand}</code>
-                <span className="sdk-badge">coming soon</span>
-              </div>
+              <NotifyForm />
             </div>
           </div>
         </div>

@@ -83,8 +83,8 @@ export default async function OpenGraphImage() {
               textTransform: "uppercase",
             }}
           >
-            <span>KYC-Gated Privacy Pools</span>
-            <span>Existing EVM Chains</span>
+            <span>Compliant by Design</span>
+            <span>Zero Fees</span>
           </div>
           <div
             style={{
@@ -99,7 +99,7 @@ export default async function OpenGraphImage() {
               textShadow: "0 0 18px rgba(255,255,255,0.28)",
             }}
           >
-            Per-customer privacy pools on existing EVM chains.
+            Per-customer privacy pools.
           </div>
           <div
             style={{
@@ -113,7 +113,7 @@ export default async function OpenGraphImage() {
               letterSpacing: -0.4,
             }}
           >
-            Operator-held viewing keys. Encrypted traces. Compliance workflows.
+            Plug-and-play with existing apps & EVM networks. Lightning fast, zero fees.
           </div>
           <div
             style={{

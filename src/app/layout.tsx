@@ -39,17 +39,19 @@ const geistMono = localFont({
   ],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://foglight.xyz";
+const siteUrl = "https://foglight.xyz";
+
+const siteTitle = "Foglight — Per-customer privacy pools, compliant by design";
+const siteDescription =
+  "Onchain privacy that's user-friendly and legally compliant. Plug-and-play with existing apps & EVM networks. Lightning fast, zero fees.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Foglight — Per-customer privacy pools on existing EVM chains",
-  description:
-    "KYC-gated privacy pools for EVM operators, with operator-held viewing keys and encrypted on-chain traces for compliance workflows.",
+  title: siteTitle,
+  description: siteDescription,
   openGraph: {
-    title: "Foglight — Per-customer privacy pools on existing EVM chains",
-    description:
-      "Wallets, neobanks, custodians, and treasuries run siloed pools with operator-held viewing keys, Travel Rule workflows, and authorized reveal.",
+    title: siteTitle,
+    description: siteDescription,
     url: siteUrl,
     siteName: "Foglight",
     type: "website",
@@ -58,15 +60,14 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Foglight — Per-customer privacy pools on existing EVM chains",
+        alt: siteTitle,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foglight — Per-customer privacy pools on existing EVM chains",
-    description:
-      "KYC-gated privacy pools for EVM operators, with operator-held viewing keys and encrypted on-chain traces for compliance workflows.",
+    title: siteTitle,
+    description: siteDescription,
     images: ["/opengraph-image"],
   },
 };

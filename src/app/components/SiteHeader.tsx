@@ -19,11 +19,6 @@ export default function SiteHeader({ variant = "default" }: SiteHeaderProps) {
         <span className="brand-wordmark">Foglight</span>
       </Link>
       <div className="site-header-right">
-        <nav className="site-header-nav" aria-label="Subpages">
-          <Link href="/product">Product</Link>
-          <span aria-hidden="true">·</span>
-          <Link href="/about">About</Link>
-        </nav>
         <a
           className="nav-x-link"
           href={contactHref}

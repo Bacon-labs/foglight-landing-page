@@ -189,7 +189,7 @@ export default function MetadataLens() {
         <div className="hero-block-main">
           <div className="hero-heading">
             <h1 className="hero-title">
-              <span className="hero-title-heavy">Per-customer privacy pools</span>
+              <span className="hero-title-heavy">Private by default.</span>
               <span className="hero-title-soft">Compliant by design.</span>
             </h1>
           </div>

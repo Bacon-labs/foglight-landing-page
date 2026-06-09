@@ -41,7 +41,7 @@ const geistMono = localFont({
 
 const siteUrl = "https://foglight.xyz";
 
-const siteTitle = "Foglight — Per-customer privacy pools, compliant by design";
+const siteTitle = "Foglight — Private by default, compliant by design";
 const siteDescription =
   "Onchain privacy that's user-friendly and legally compliant. Plug-and-play with existing apps & EVM networks. Lightning fast, zero fees.";
 

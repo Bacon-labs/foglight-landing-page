@@ -99,7 +99,7 @@ export default async function OpenGraphImage() {
               textShadow: "0 0 18px rgba(255,255,255,0.28)",
             }}
           >
-            Per-customer privacy pools.
+            Private by default.
           </div>
           <div
             style={{

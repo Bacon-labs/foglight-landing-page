@@ -24,6 +24,14 @@
 .DS_Store
 *.pem
 
+# non-public collateral
+*onepager*.pdf
+*one-pager*.pdf
+*pitch*.pdf
+*deck*.pdf
+*preseed*.pdf
+*pre-seed*.pdf
+
 # debug
 npm-debug.log*
 yarn-debug.log*
